@@ -8,11 +8,11 @@ public class Instituition_imp implements Instituition {
     private String name;
     private String email;
     private InstituitionType type;
-    private Contact contact;
+    private Contact_imp contact;
     private String website;
     private String description;
 
-    public Instituition_imp(String name, String email, InstituitionType type, Contact contact, String website, String description) {
+    public Instituition_imp(String name, String email, InstituitionType type, Contact_imp contact, String website, String description) {
         this.name = name;
         this.email = email;
         this.type = type;
@@ -37,7 +37,7 @@ public class Instituition_imp implements Instituition {
     }
 
     @Override
-    public Contact getContact() {
+    public Contact_imp getContact() {
         return contact;
     }
 
@@ -63,8 +63,9 @@ public class Instituition_imp implements Instituition {
 
     @Override
     public void setContact(Contact contact) {
-        this.contact = contact;
+        this.contact = (Contact_imp) contact;
     }
+
 
     @Override
     public void setType(InstituitionType instituitionType) {
@@ -95,13 +96,16 @@ public class Instituition_imp implements Instituition {
 
     @Override
     public String toString() {
-        return "Instituition_imp{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", type=" + type +
-                ", contact=" + contact +
-                ", website='" + website + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        String text = "";
+
+        text += "--Instituition-- \n"
+                +"Name: " + this.name + "\n"
+                +"Email: " + this.email + "\n"
+                + "Type: " + this.type + "\n"
+                + "Contact: " + this.contact + "\n"
+                + "Website: " + this.website + "\n"
+                + "Description: " + this.description + "\n";
+
+        return text;
     }
 }

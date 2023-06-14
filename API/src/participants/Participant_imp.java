@@ -3,18 +3,23 @@ package participants;
 import ma02_resources.participants.Contact;
 import ma02_resources.participants.Instituition;
 import ma02_resources.participants.Participant;
-import ma02_resources.participants.InstituitionType;
 
-public abstract class Participant_imp implements Participant {
+
+public class Participant_imp implements Participant {
     private String name;
     private String email;
-    private Contact contact;
-    private Instituition instituition;
+    private Contact_imp contact;
+    private Instituition_imp instituition;
 
-    public Participant_imp(String name, String email, Contact contact, Instituition instituition) {
+    public Participant_imp(String name, String email, Contact_imp contact, Instituition_imp instituition) {
         this.name = name;
         this.email = email;
         this.contact = contact;
+        this.instituition = instituition;
+    }
+    public Participant_imp(String name, String email, Instituition_imp instituition) {
+        this.name = name;
+        this.email = email;
         this.instituition = instituition;
     }
 
@@ -34,18 +39,18 @@ public abstract class Participant_imp implements Participant {
     }
 
     @Override
-    public Instituition getInstituition() {
+    public Instituition_imp getInstituition() {
         return instituition;
     }
 
     @Override
     public void setInstituition(Instituition instituition) {
-        this.instituition = instituition;
+        this.instituition = (Instituition_imp) instituition;
     }
 
     @Override
     public void setContact(Contact contact) {
-        this.contact = contact;
+        this.contact = (Contact_imp) contact;
     }
 
     @Override
@@ -77,7 +82,7 @@ public abstract class Participant_imp implements Participant {
         text += "----Info Participant----"
                 + "\nName: " + name
                 + "\nEmail: " + email
-                + "\n--Contact--\n" + contact.toString()
+                + "\n--Contact--\n" + contact
                 + "\n--Instituition-- " + instituition;
 
         return text;

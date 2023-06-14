@@ -8,7 +8,7 @@ public class Partner_imp extends Participant_imp implements Partner {
     private String vat;
     private String website;
 
-    public Partner_imp(String name, String email, Contact contact, Instituition instituition, String vat, String website) {
+    public Partner_imp(String name, String email, Contact_imp contact, Instituition_imp instituition, String vat, String website) {
         super(name, email, contact, instituition);
         this.vat = vat;
         this.website = website;

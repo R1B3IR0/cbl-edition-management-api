@@ -7,7 +7,7 @@ import ma02_resources.participants.Instituition;
 public class Facilitator_imp extends Participant_imp  implements Facilitator {
     private String areaOfExpertise;
 
-    public Facilitator_imp(String name, String email, Contact contact, Instituition instituition, String areaOfExpertise) {
+    public Facilitator_imp(String name, String email, Contact_imp contact, Instituition_imp instituition, String areaOfExpertise) {
         super(name, email, contact, instituition);
         this.areaOfExpertise = areaOfExpertise;
     }
