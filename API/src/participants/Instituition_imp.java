@@ -98,14 +98,12 @@ public class Instituition_imp implements Instituition {
     public String toString() {
         String text = "";
 
-        text += "--Instituition-- \n"
-                +"Name: " + this.name + "\n"
+        text += "Name: " + this.name + "\n"
                 +"Email: " + this.email + "\n"
                 + "Type: " + this.type + "\n"
-                + "Contact: " + this.contact + "\n"
+                + "Contact:\n" + this.contact + "\n"
                 + "Website: " + this.website + "\n"
-                + "Description: " + this.description + "\n";
-
+                + "Description: " + this.description;
         return text;
     }
 }

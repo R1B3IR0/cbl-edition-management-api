@@ -5,7 +5,7 @@ import ma02_resources.participants.Instituition;
 import ma02_resources.participants.Participant;
 
 
-public class Participant_imp implements Participant {
+public abstract class Participant_imp implements Participant {
     private String name;
     private String email;
     private Contact_imp contact;
@@ -79,12 +79,10 @@ public class Participant_imp implements Participant {
     public String toString() {
         String text = "";
 
-        text += "----Info Participant----"
-                + "\nName: " + name
+        text += "\nName: " + name
                 + "\nEmail: " + email
                 + "\n--Contact--\n" + contact
-                + "\n--Instituition-- " + instituition;
-
+                + "\n--Instituition--\n" + instituition;
         return text;
     }
 

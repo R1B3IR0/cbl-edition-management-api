@@ -5,18 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02358d0b-8d8c-4c20-8464-607cdbc65e1c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/exceptions/IllegalNumberOfParticipantType_imp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/MissingAttributesParticipant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/Project_imp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/Submission_imp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/Task_imp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/participants/Facilitator_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/participants/Facilitator_imp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/IllegalNumberOfParticipantType_imp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/MissingAttributesParticipant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/MissingAttributesParticipant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/participants/Instituition_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/participants/Instituition_imp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/participants/Participant_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/participants/Participant_imp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/participants/Partner_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/participants/Partner_imp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/participants/Student_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/participants/Student_imp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/Edition_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Edition_imp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/Project_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Project_imp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/Submission_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Submission_imp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/Task_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Task_imp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +36,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2R7crEyqxbfeVpsdNseFN35EoRw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -50,10 +52,11 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/RIBEIRO/Documents/ESTG/PP/EN/API",
+    "last_opened_file_path": "C:/Users/RIBEIRO/Documents/ESTG/PP/PP_Exame-master/PP_Exame-master",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "advanced.settings"
   }
 }]]></component>

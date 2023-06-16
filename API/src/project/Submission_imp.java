@@ -32,10 +32,10 @@ public class Submission_imp implements Submission {
     }
 
     @Override
-    public int compareTo(Submission var1) {
-        if (this.getDate().isBefore(var1.getDate())) {
+    public int compareTo(Submission submission) {
+        if (this.getDate().isBefore(submission.getDate())) {
             return -1;
-        } else if (this.getDate().equals(var1.getDate())) {
+        } else if (this.getDate().equals(submission.getDate())) {
             return 0;
         } else {
             return 1;
@@ -48,7 +48,7 @@ public class Submission_imp implements Submission {
 
         text += "Submission: " + date + "\n"
                 + "Student: " + student + "\n"
-                + "Text: " + text + "\n";
+                + "Text: " + this.text + "\n";
         return text;
     }
 }

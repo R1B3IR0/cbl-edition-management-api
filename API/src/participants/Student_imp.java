@@ -21,8 +21,7 @@ public class Student_imp extends Participant_imp implements Student {
     public String toString() {
         String text = "";
 
-        text += "----Student----"
-                + super.toString()
+        text += super.toString()
                 +"\nNumber: " + number;
 
         return text;
