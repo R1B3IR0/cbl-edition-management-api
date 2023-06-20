@@ -11,6 +11,7 @@ public abstract class Participant_imp implements Participant {
     private Contact_imp contact;
     private Instituition_imp instituition;
 
+
     public Participant_imp(String name, String email, Contact_imp contact, Instituition_imp instituition) {
         this.name = name;
         this.email = email;

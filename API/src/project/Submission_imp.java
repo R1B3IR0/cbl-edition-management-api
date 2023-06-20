@@ -35,10 +35,13 @@ public class Submission_imp implements Submission {
     public int compareTo(Submission submission) {
         if (this.getDate().isBefore(submission.getDate())) {
             return -1;
-        } else if (this.getDate().equals(submission.getDate())) {
-            return 0;
-        } else {
+        } else if (this.getDate().isAfter(submission.getDate())) {
             return 1;
+        } else {
+            // If the dates are equal, compare by the name of the student
+            //return this.getStudent().getName().compareTo(submission.getStudent().getName());
+            return 0;
+
         }
     }
 

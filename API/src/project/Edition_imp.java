@@ -1,32 +1,66 @@
 package project;
 
 
+import interfaces.Event;
+import interfaces.Event2;
 import ma02_resources.project.Edition;
 import ma02_resources.project.Project;
 import ma02_resources.project.Status;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
-
+import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
 
 
-public class Edition_imp implements Edition {
+public class Edition_imp implements Edition, Event2 {
     private String name;
     private LocalDate start;
     private LocalDate end;
     private String projectTemplate;
     private Status status;
     private Project_imp[] projects;
-    private int numberOfProjects = 0;
+    private int numberOfProjects;
+    private final int MAXIMUM_NUMBER_OF_PROJECTS = 3;
+    private Event_imp[] events;
+    private int numberOfEvents;
 
-    public Edition_imp(String name, LocalDate start, LocalDate end, String projectTemplate, Status status, Project_imp[] projects) {
+    private final int MAXIMUM_NUMBER_OF_EVENTS = 3;
+
+
+    public Edition_imp(String name, LocalDate start, LocalDate end, String projectTemplate, Status status,
+                       Project_imp[] projects) {
         this.name = name;
         this.start = start;
         this.end = end;
         this.projectTemplate = projectTemplate;
-        this.status = status.INACTIVE;
+        this.status = status;
         this.projects = projects;
+        this.numberOfProjects = projects.length;
+    }
+
+    public Edition_imp(String name, LocalDate start, LocalDate end, String projectTemplate, Project_imp[] projects,
+                       int numberOfProjects) {
+        this.name = name;
+        this.start = start;
+        this.end = end;
+        this.projectTemplate = projectTemplate;
+        this.status = Status.INACTIVE;
+        this.projects = new Project_imp[numberOfProjects];
+        this.numberOfProjects = numberOfProjects;
+    }
+
+    public Edition_imp(String name, LocalDate start, LocalDate end, String projectTemplate) {
+        this.name = name;
+        this.start = start;
+        this.end = end;
+        this.projectTemplate = projectTemplate;
+        this.status = Status.INACTIVE;
+        this.projects = new Project_imp[MAXIMUM_NUMBER_OF_PROJECTS];
+        this.numberOfProjects = 0;
     }
 
     @Override
@@ -59,7 +93,7 @@ public class Edition_imp implements Edition {
     }
 
     /**
-     * This method adds a project to the edition. The project is created from a template JSON.
+     * This method adds a project to the edition. The project is created from a projectTemplate.
      *
      * @param name        name of the project
      * @param description description of the project
@@ -70,8 +104,80 @@ public class Edition_imp implements Edition {
      */
     @Override
     public void addProject(String name, String description, String[] tags) throws IOException, ParseException {
+        FileReader read = null;
+        try {
+            if (name == null || name.isEmpty()) {
+                throw new IOException("Project name can't be null or empty");
+            } else if (description == null || description.isEmpty()) {
+                throw new IOException("Project description can't be null or empty");
+            } else if (tags == null || tags.length == 0) {
+                throw new IOException("Project tags can't be null or empty");
+            } else {
+                if (numberOfProjects == MAXIMUM_NUMBER_OF_PROJECTS) {
+                    Project_imp[] tmp = new Project_imp[(numberOfProjects * 2)];
+                    for (int i = 0; i < numberOfProjects; i++) {
+                        tmp[i] = projects[i];
+                    }
+                    projects = tmp;
+                }
 
+            }
 
+            JSONParser parser = new JSONParser();
+            //Read the JSON file
+            read = new FileReader("../libs/project_template.json");
+            //Parse the JSON file
+            JSONObject jsonObject = (JSONObject) parser.parse(read);
+
+            //Get data from JSON file
+            int numberOfFacilitators = ((Long) jsonObject.get("number_of_facilitators")).intValue();
+            int numberOfStudents = ((Long) jsonObject.get("number_of_students")).intValue();
+            int numberOfPartners = ((Long) jsonObject.get("number_of_partners")).intValue();
+            int numberOfParticipants = ((Long) jsonObject.get("number_of_participants")).intValue();
+
+            //Get data of tasks array from JSON file
+            JSONArray jsonArrayTask = (JSONArray) jsonObject.get("tasks");
+
+            // Determine the number of tasks
+            int numberOfTasks = jsonArrayTask.size();
+
+            Task_imp[] tasks = getTasksFromJSON(jsonObject, jsonArrayTask);
+
+            projects[numberOfProjects++] = new Project_imp(name, description, numberOfParticipants, numberOfPartners,
+                    numberOfFacilitators, numberOfStudents, numberOfTasks, tags, tasks);
+
+        } catch (IOException e) {
+            throw new IOException("Project template not found", e);
+        } catch (org.json.simple.parser.ParseException e) {
+            throw new ParseException("Project template not valid", 0);
+        } finally {
+            if (read != null) {
+                read.close();
+            }
+        }
+    }
+
+    private Task_imp[] getTasksFromJSON(JSONObject jsonObject, JSONArray jsonArrayTask) {
+        // Create an array of tasks
+        Task_imp[] tasks = new Task_imp[jsonArrayTask.size()];
+        for (int i = 0; i < jsonArrayTask.size(); i++) {
+
+            JSONObject taskObject1 = (JSONObject) jsonArrayTask.get(i);
+
+            // Get data from taskObject1
+            String title = (String) taskObject1.get("title");
+            String description = (String) taskObject1.get("description");
+            int StartAt = ((Long) taskObject1.get("start_at")).intValue();
+            int duration = ((Long) taskObject1.get("duration")).intValue();
+
+            // Create a task with the data
+            Task_imp taskTemplate = new Task_imp(title, description, StartAt, duration, start);
+
+            //Add the task to the array
+            tasks[i++] = taskTemplate;
+
+        }
+        return tasks;
     }
 
     /**
@@ -152,7 +258,25 @@ public class Edition_imp implements Edition {
      */
     @Override
     public Project[] getProjectsByTag(String tag) {
-        return new Project[0];
+        if (tag == null || tag.isEmpty()) {
+            throw new IllegalArgumentException("Tag can't be null or empty");
+        } else {
+            Project_imp[] tmp = new Project_imp[numberOfProjects];
+            int tmpPosition = 0;
+            for (int i = 0; i < numberOfProjects; i++) {
+                for (int j = 0; j < projects[i].getNumberOfTags(); j++) {
+                    if (projects[i].getTags()[j].equals(tag)) {
+                        tmp[tmpPosition] = projects[i];
+                        tmpPosition++;
+                    }
+                }
+            }
+            Project_imp[] result = new Project_imp[tmpPosition];
+            for (int i = 0; i < tmpPosition; i++) {
+                result[i] = tmp[i];
+            }
+            return result;
+        }
     }
 
     /**
@@ -163,19 +287,26 @@ public class Edition_imp implements Edition {
      */
     @Override
     public Project[] getProjectsOf(String email) {
-        if (projects == null) {
-            throw new IllegalArgumentException("Projects can't be null");
+        if (email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("Email can't be null or empty");
         } else {
+            Project_imp[] tmp = new Project_imp[numberOfProjects];
+            int tmpPosition = 0;
             for (int i = 0; i < numberOfProjects; i++) {
-                for (int j = 0; i < projects[i].getNumberOfParticipants(); i++) {
-
-
+                for (int j = 0; j < projects[i].getNumberOfParticipants(); j++) {
+                    if (projects[i].getParticipants()[j].equals(email)) {
+                        tmp[tmpPosition] = projects[i];
+                        tmpPosition++;
+                    }
                 }
             }
+            Project_imp[] result = new Project_imp[tmpPosition];
+            for (int i = 0; i < tmpPosition; i++) {
+                result[i] = tmp[i];
+            }
+            return result;
         }
-        return new Project[0];
     }
-
 
     /**
      * This method returns the number of projects in the edition.
@@ -203,5 +334,69 @@ public class Edition_imp implements Edition {
             }
         }
         return end;
+    }
+
+    public boolean isActive() {
+        return status == Status.ACTIVE;
+    }
+
+    @Override
+    public void addEvent(Event event) {
+        if (event == null) {
+            throw new IllegalArgumentException("Event can't be null");
+        } else {
+            events[numberOfEvents++] = (Event_imp) event;
+        }
+    }
+
+    @Override
+    public void removeEvent(String var1) {
+        if (var1 == null || var1.isEmpty()) {
+            throw new IllegalArgumentException("Event name can't be null or empty");
+        } else {
+            int[] positions = new int[numberOfEvents];
+            int found = 0;
+            for (int i = 0; i < numberOfEvents; i++) {
+                if (events[i].getName().equals(var1)) {
+                    positions[i] = 1;
+                    found++;
+                }
+            }
+            // Remove event
+            if (found > 0) {
+                Event_imp[] tmp = new Event_imp[numberOfEvents - found];
+                int tmpPosition = 0;
+                // Copy all events that are not to be removed
+                for (int i = 0; i < positions.length; i++) {
+                    if (positions[i] == 0) {
+                        tmp[tmpPosition] = events[i];
+                        tmpPosition++;
+                    }
+                }
+                events = tmp;
+                numberOfEvents--;
+            } else {
+                throw new IllegalArgumentException("Event does not exist");
+            }
+        }
+    }
+
+    @Override
+    public Event getEvent(String var1) {
+        if (var1 == null || var1.isEmpty()) {
+            throw new IllegalArgumentException("Event name can't be null or empty");
+        } else {
+            for (int i = 0; i < numberOfEvents; i++) {
+                if (events[i].getName().equals(var1)) {
+                    return events[i];
+                }
+            }
+            throw new IllegalArgumentException("Event does not exist");
+        }
+    }
+
+    @Override
+    public Event[] getEvents() {
+        return events;
     }
 }

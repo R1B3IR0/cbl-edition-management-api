@@ -7,17 +7,33 @@ import ma02_resources.participants.Instituition;
 public class Facilitator_imp extends Participant_imp  implements Facilitator {
     private String areaOfExpertise;
 
+    /**
+     * Constructor for Facilitator_imp
+     * @param name
+     * @param email
+     * @param contact
+     * @param instituition
+     * @param areaOfExpertise
+     */
     public Facilitator_imp(String name, String email, Contact_imp contact, Instituition_imp instituition, String areaOfExpertise) {
         super(name, email, contact, instituition);
         this.areaOfExpertise = areaOfExpertise;
     }
 
 
+    /**
+     * returns the {@code areaOfExpertise} of the Facilitator
+     * @return
+     */
     @Override
     public String getAreaOfExpertise() {
         return areaOfExpertise;
     }
 
+    /**
+     * sets the {@code areaOfExpertise} of the Facilitator
+     * @param s
+     */
     @Override
     public void setAreaOfExpertise(String s) {
         this.areaOfExpertise = s;

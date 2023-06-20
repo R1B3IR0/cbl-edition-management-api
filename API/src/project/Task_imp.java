@@ -7,16 +7,25 @@ import java.time.LocalDate;
 
 
 public class Task_imp implements Task {
-    private final int MAX = 20;
-
+    private final int MAXIMUM_NUMBER_OF_SUBMISSIONS = 6;
     private LocalDate start;
     private LocalDate end;
     private int duration;
     private String title;
     private String description;
     private Submission_imp[] submissions;
-    private int numberOfSubmissions = 0;
+    private int numberOfSubmissions;
 
+    /**
+     * Constructor of the class Task_imp
+     *
+     * @param start       the start date of the task
+     * @param end         the end date of the task
+     * @param duration    the duration of the task in days
+     * @param title       the title of the task
+     * @param description the description of the task
+     * @param submissions the array of submissions for the task
+     */
     public Task_imp(LocalDate start, LocalDate end, int duration, String title, String description, Submission_imp[] submissions) {
         this.start = start;
         this.end = end;
@@ -24,7 +33,29 @@ public class Task_imp implements Task {
         this.title = title;
         this.description = description;
         this.submissions = submissions;
+        this.numberOfSubmissions = 0;
     }
+    /**
+     * Constructor of the class Task_imp is used in addProject in the class Edition_imp
+     *
+     *
+     *
+     * @param title       the title of the task
+     * @param description the description of the task
+     * @param startAt     the start date of the task
+     * @param duration    the duration of the task in days
+     * @param editionStart the start date of the edition of the task
+     */
+    public Task_imp(String title, String description, int startAt, int duration, LocalDate editionStart) {
+        this.title = title;
+        this.description = description;
+        this.start = editionStart.plusDays(startAt);
+        this.end = start.plusDays(duration);
+        this.duration = duration;
+        this.submissions = new Submission_imp[MAXIMUM_NUMBER_OF_SUBMISSIONS];
+        this.numberOfSubmissions = 0;
+    }
+    //Miss
 
     @Override
     public LocalDate getStart() {
@@ -66,8 +97,9 @@ public class Task_imp implements Task {
         if (submission == null) {
             throw new NullPointerException("Submission is null");
         }
-        if (numberOfSubmissions >= MAX) {
-            Submission_imp[] tmp = new Submission_imp[(MAX * 2)];
+        /*
+        if (numberOfSubmissions >= MAXIMUM_NUMBER_OF_SUBMISSIONS) {
+            Submission_imp[] tmp = new Submission_imp[(MAXIMUM_NUMBER_OF_SUBMISSIONS * 2)];
 
             for (int i = 0; i < numberOfSubmissions; i++) {
                 tmp[i] = submissions[i];
@@ -76,7 +108,7 @@ public class Task_imp implements Task {
         }
         if (find(submission) != -1) {
             System.out.println("Submission doesn't exist");
-        }
+        }*/
 
         submissions[numberOfSubmissions++] = (Submission_imp) submission;
         System.out.println("Submission: " + submission.getText() + " added with success");
@@ -116,14 +148,20 @@ public class Task_imp implements Task {
         this.end.plusDays(i);
     }
 
+    /**
+     * //a negative integer, zero, or a positive integer as this task is less than, equal to, or greater than the specified task.
+     * @param task the object to be compared.
+     * @return
+     */
     @Override
     public int compareTo(Task task) {
         if (this.getStart().isBefore(task.getStart())) {
             return -1;
-        } else if (this.getStart().equals(task.getStart())) {
-            return 0;
-        } else {
+        } else if (this.getStart().isAfter(task.getStart())) {
             return 1;
+        } else {
+            return 0;
+
         }
     }
 
