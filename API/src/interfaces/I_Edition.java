@@ -19,6 +19,8 @@ public interface I_Edition {
     //Return all editions
     Edition[] getEditions();
 
+    //Edition getEdition(String name);
+
     //Return the edition with projects that have missing submissions
     Edition[] getProjectsWithMissingSubmissions();
 
@@ -27,5 +29,13 @@ public interface I_Edition {
 
     //Return a textual representation of the progress of a specific edition
     String getEditionProgress(Edition edition);
+
+    public Edition getActiveEdition();
+
+    public Edition[] getAllInactiveEditions();
+
+    public Edition[] getAllClosedEditions();
+
+    public Edition[] getAllCanceledEditions();
 
 }

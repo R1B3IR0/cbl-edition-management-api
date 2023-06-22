@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface Event2 {
+public interface Event_CRUD {
 
     void addEvent(Event event);
 

@@ -24,7 +24,6 @@ public class Partner_imp extends Participant_imp implements Partner {
         this.website = website;
     }
 
-
     @Override
     public String getVat() {
         return vat;

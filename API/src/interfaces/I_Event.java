@@ -1,4 +1,7 @@
 package interfaces;
 
-public class I_Event {
+import ma02_resources.project.Edition;
+
+public interface I_Event {
+
 }

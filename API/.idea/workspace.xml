@@ -5,37 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02358d0b-8d8c-4c20-8464-607cdbc65e1c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/json_simple_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/libs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/enumerations/EventType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/EditionManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/Event2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/I_Edition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/I_Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/I_Participant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/I_Project.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/EditionManagement_imp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/project/Event_imp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/enumerations/Rank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/I_Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2223_PP_EN.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../2223_PP_EN.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API.iml" beforeDir="false" afterPath="$PROJECT_DIR$/API.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/participants/Participant_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/participants/Participant_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/participants/Partner_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/participants/Partner_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/project/Edition_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/project/Edition_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/project/Project_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/project/Project_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/project/Task_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/project/Task_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/MissingAttributesParticipant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/participants/Contact_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/participants/Contact_imp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/participants/Facilitator_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/participants/Facilitator_imp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/participants/Instituition_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/participants/Instituition_imp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/participants/Participant_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/participants/Participant_imp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/EditionManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/I_EditionManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/Event2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/Event_CRUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/I_Edition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/I_Edition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/I_Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/I_Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/I_Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/I_Participant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/I_Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/I_Project.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/participants/Partner_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/participants/Partner_imp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/participants/Student_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/participants/Student_imp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/EditionManagement_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/EditionManagement_imp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project/Edition_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Edition_imp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/Event_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Event_imp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project/Project_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Project_imp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project/Submission_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Submission_imp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project/Task_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Task_imp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>

@@ -2,7 +2,7 @@ package project;
 
 
 import interfaces.Event;
-import interfaces.Event2;
+import interfaces.Event_CRUD;
 import ma02_resources.project.Edition;
 import ma02_resources.project.Project;
 import ma02_resources.project.Status;
@@ -16,7 +16,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 
 
-public class Edition_imp implements Edition, Event2 {
+public class Edition_imp implements Edition, Event_CRUD {
     private String name;
     private LocalDate start;
     private LocalDate end;
@@ -27,7 +27,6 @@ public class Edition_imp implements Edition, Event2 {
     private final int MAXIMUM_NUMBER_OF_PROJECTS = 3;
     private Event_imp[] events;
     private int numberOfEvents;
-
     private final int MAXIMUM_NUMBER_OF_EVENTS = 3;
 
 
@@ -62,6 +61,26 @@ public class Edition_imp implements Edition, Event2 {
         this.projects = new Project_imp[MAXIMUM_NUMBER_OF_PROJECTS];
         this.numberOfProjects = 0;
     }
+    /**
+     * Constructor of the class Edition_imp with events included
+     *
+     * @param name            the name of the edition
+     * @param start           the start date of the edition
+     * @param end             the end date of the edition
+     * @param projectTemplate the project template of the edition
+     * @param status          the status of the edition
+     */
+    public Edition_imp(String name, LocalDate start, LocalDate end, String projectTemplate, Status status) {
+        this.name = name;
+        this.start = start;
+        this.end = end;
+        this.projectTemplate = projectTemplate;
+        this.status = status;
+        this.projects = new Project_imp[MAXIMUM_NUMBER_OF_PROJECTS];
+        this.numberOfProjects = 0;
+        this.events = new Event_imp[MAXIMUM_NUMBER_OF_EVENTS];
+        this.numberOfEvents = 0;
+    }
 
     @Override
     public String getName() {
@@ -90,6 +109,10 @@ public class Edition_imp implements Edition, Event2 {
         } else {
             this.status = status;
         }
+    }
+
+    public int getMAXIMUM_NUMBER_OF_PROJECTS() {
+        return MAXIMUM_NUMBER_OF_PROJECTS;
     }
 
     /**
@@ -336,10 +359,11 @@ public class Edition_imp implements Edition, Event2 {
         return end;
     }
 
-    public boolean isActive() {
-        return status == Status.ACTIVE;
-    }
-
+    /**
+     * This method adds an event to the edition.
+     *
+     * @return
+     */
     @Override
     public void addEvent(Event event) {
         if (event == null) {
@@ -349,6 +373,12 @@ public class Edition_imp implements Edition, Event2 {
         }
     }
 
+    /**
+     * This method removes an event from the edition. The event is identified by its name.
+     *
+     * @param var1 The name of the event
+     * @throws IllegalArgumentException - if event name is null or empty, or event does not exist.
+     */
     @Override
     public void removeEvent(String var1) {
         if (var1 == null || var1.isEmpty()) {
@@ -380,7 +410,12 @@ public class Edition_imp implements Edition, Event2 {
             }
         }
     }
-
+    /**
+     * This method returns an event from the edition. The event is identified by its name.
+     * @param var1 The name of the event
+     * @return The method returns an event of the edition.
+     * @throws IllegalArgumentException - if event name is null or empty, or event does not exist.
+     */
     @Override
     public Event getEvent(String var1) {
         if (var1 == null || var1.isEmpty()) {
@@ -395,6 +430,10 @@ public class Edition_imp implements Edition, Event2 {
         }
     }
 
+    /**
+     *  This method returns all events of the edition.
+     * @return
+     */
     @Override
     public Event[] getEvents() {
         return events;

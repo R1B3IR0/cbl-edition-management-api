@@ -1,5 +1,8 @@
 package project;
 
+import enumerations.EventType;
+import interfaces.Event;
+import interfaces.Event_CRUD;
 import ma02_resources.participants.Participant;
 import ma02_resources.project.Project;
 import ma02_resources.project.Task;
@@ -15,7 +18,7 @@ import participants.Student_imp;
 import java.util.Arrays;
 
 
-public class Project_imp implements Project {
+public class Project_imp implements Project, Event_CRUD {
 
     private String name;
     private String description;
@@ -33,6 +36,9 @@ public class Project_imp implements Project {
     private String[] tags;
     private Task_imp[] tasks;
     private boolean hasTags;
+
+    private Event_imp[] events;
+    private EventType type;
 
     /**
      * Constructor of the class Project_imp
@@ -299,7 +305,7 @@ public class Project_imp implements Project {
         throw new IllegalArgumentException("Participant not found");
     }
 
-    protected Participant_imp[] getParticipants() {
+    public Participant_imp[] getParticipants() {
         return participants;
     }
     @Override
@@ -414,6 +420,10 @@ public class Project_imp implements Project {
         return numberOfTags;
     }
 
+    public EventType getType() {
+        return type;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -466,6 +476,29 @@ public class Project_imp implements Project {
     }
 
 
+    @Override
+    public void addEvent(Event event) {
+
+    }
+
+    @Override
+    public void removeEvent(String var1) {
+
+    }
+
+    @Override
+    public Event getEvent(String var1) {
+        return null;
+    }
+
+    /**
+     * This method returns the array of events
+     * @return
+     */
+    @Override
+    public Event[] getEvents() {
+        return events;
+    }
 }
 
 

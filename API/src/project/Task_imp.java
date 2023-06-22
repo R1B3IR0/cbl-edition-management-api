@@ -92,6 +92,10 @@ public class Task_imp implements Task {
         return numberOfSubmissions;
     }
 
+    public int getMAXIMUM_NUMBER_OF_SUBMISSIONS() {
+        return MAXIMUM_NUMBER_OF_SUBMISSIONS;
+    }
+
     @Override
     public void addSubmission(Submission submission) {
         if (submission == null) {
