@@ -16,6 +16,12 @@ public class Submission_imp implements Submission {
         this.text = text;
     }
 
+    public Submission_imp(Student_imp student, String text) {
+        this.date = LocalDateTime.now();
+        this.student = student;
+        this.text = text;
+    }
+
     @Override
     public LocalDateTime getDate() {
         return date;

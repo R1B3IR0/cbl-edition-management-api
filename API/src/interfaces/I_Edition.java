@@ -1,6 +1,8 @@
 package interfaces;
 
+import ma02_resources.participants.Student;
 import ma02_resources.project.Edition;
+import ma02_resources.project.Project;
 
 public interface I_Edition {
 
@@ -39,6 +41,8 @@ public interface I_Edition {
     public Edition[] getAllCanceledEditions();
 
     String rankOfProjects();
+
+    String getProjectProgress(Project project);
 
 
 }

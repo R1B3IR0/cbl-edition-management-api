@@ -14,7 +14,6 @@ public interface I_Project {
     //Return the number of projects about a specific edition
     int getNumberOfProjects(String editionName);
 
-    //Return a textual representation of the progress of a specific project in a specific edition
-    String getProjectProgress(Project project);
+
 
 }

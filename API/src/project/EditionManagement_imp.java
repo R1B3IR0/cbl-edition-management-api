@@ -769,6 +769,27 @@ public class EditionManagement_imp implements I_EditionManagement {
         }
     }
 
+
+
+
+    @Override
+    public String rankOfProjects() {
+        for (int i = 0; i < numberOfEditions; i++) {
+            if (editions[i].getNumberOfProjects() >= 1  && editions[i].getNumberOfProjects() < 10) {
+                return RankType.ONE_STAR.toString();
+            } else if (editions[i].getNumberOfProjects() >= 10 && editions[i].getNumberOfProjects() < 20) {
+                return RankType.TWO_STARS.toString();
+            } else if (editions[i].getNumberOfProjects() >= 20 && editions[i].getNumberOfProjects() < 30) {
+                return RankType.THREE_STARS.toString();
+            } else if (editions[i].getNumberOfProjects() >= 30 && editions[i].getNumberOfProjects() < 40) {
+                return RankType.FOUR_STARS.toString();
+            } else if (editions[i].getNumberOfProjects() >= 40) {
+                return RankType.FIVE_STARS.toString();
+            }
+        }
+        return null;
+    }
+
     /**
      * Retrieves the progress of the project as a percentage.
      * <p>
@@ -806,24 +827,6 @@ public class EditionManagement_imp implements I_EditionManagement {
         String progress = String.format("%.2f", progressPercentage) + "%";
 
         return "The project is inm " + progress + " progress, with " + completedTasks + " tasks completed.";
-    }
-
-    @Override
-    public String rankOfProjects() {
-        for (int i = 0; i < numberOfEditions; i++) {
-            if (editions[i].getNumberOfProjects() >= 1  && editions[i].getNumberOfProjects() < 10) {
-                return RankType.ONE_STAR.toString();
-            } else if (editions[i].getNumberOfProjects() >= 10 && editions[i].getNumberOfProjects() < 20) {
-                return RankType.TWO_STARS.toString();
-            } else if (editions[i].getNumberOfProjects() >= 20 && editions[i].getNumberOfProjects() < 30) {
-                return RankType.THREE_STARS.toString();
-            } else if (editions[i].getNumberOfProjects() >= 30 && editions[i].getNumberOfProjects() < 40) {
-                return RankType.FOUR_STARS.toString();
-            } else if (editions[i].getNumberOfProjects() >= 40) {
-                return RankType.FIVE_STARS.toString();
-            }
-        }
-        return null;
     }
 
     @Override
