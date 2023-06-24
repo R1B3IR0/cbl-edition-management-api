@@ -1,8 +1,7 @@
 package project;
 
 
-import interfaces.Event;
-import interfaces.Event_CRUD;
+import enumerations.RankType;
 import ma02_resources.project.Edition;
 import ma02_resources.project.Project;
 import ma02_resources.project.Status;
@@ -16,7 +15,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 
 
-public class Edition_imp implements Edition, Event_CRUD {
+public class Edition_imp implements Edition {
     private String name;
     private LocalDate start;
     private LocalDate end;
@@ -24,11 +23,8 @@ public class Edition_imp implements Edition, Event_CRUD {
     private Status status;
     private Project_imp[] projects;
     private int numberOfProjects;
-    private final int MAXIMUM_NUMBER_OF_PROJECTS = 3;
-    private Event_imp[] events;
-    private int numberOfEvents;
-    private final int MAXIMUM_NUMBER_OF_EVENTS = 3;
-
+    private final int MAXIMUM_NUMBER_OF_PROJECTS = 50;
+    private RankType rankType;
 
     public Edition_imp(String name, LocalDate start, LocalDate end, String projectTemplate, Status status,
                        Project_imp[] projects) {
@@ -52,7 +48,7 @@ public class Edition_imp implements Edition, Event_CRUD {
         this.numberOfProjects = numberOfProjects;
     }
 
-    public Edition_imp(String name, LocalDate start, LocalDate end, String projectTemplate) {
+    public Edition_imp(String name, LocalDate start, LocalDate end, String projectTemplate, RankType rankType) {
         this.name = name;
         this.start = start;
         this.end = end;
@@ -60,26 +56,30 @@ public class Edition_imp implements Edition, Event_CRUD {
         this.status = Status.INACTIVE;
         this.projects = new Project_imp[MAXIMUM_NUMBER_OF_PROJECTS];
         this.numberOfProjects = 0;
+        this.rankType = rankType;
     }
+
     /**
-     * Constructor of the class Edition_imp with events included
+     * This constructor is used to create an edition //from a JSON file//.
      *
-     * @param name            the name of the edition
-     * @param start           the start date of the edition
-     * @param end             the end date of the edition
-     * @param projectTemplate the project template of the edition
-     * @param status          the status of the edition
+     * @param name            name of the edition
+     * @param projectTemplate project template of the edition
+     * @param start           start date of the edition
+     * @param end             end date of the edition
      */
-    public Edition_imp(String name, LocalDate start, LocalDate end, String projectTemplate, Status status) {
+    public Edition_imp(String name, String projectTemplate, LocalDate start, LocalDate end) {
         this.name = name;
         this.start = start;
         this.end = end;
         this.projectTemplate = projectTemplate;
-        this.status = status;
+        this.status = Status.INACTIVE;
         this.projects = new Project_imp[MAXIMUM_NUMBER_OF_PROJECTS];
         this.numberOfProjects = 0;
-        this.events = new Event_imp[MAXIMUM_NUMBER_OF_EVENTS];
-        this.numberOfEvents = 0;
+
+    }
+
+    public RankType getRank() {
+        return rankType;
     }
 
     @Override
@@ -359,83 +359,22 @@ public class Edition_imp implements Edition, Event_CRUD {
         return end;
     }
 
-    /**
-     * This method adds an event to the edition.
-     *
-     * @return
-     */
     @Override
-    public void addEvent(Event event) {
-        if (event == null) {
-            throw new IllegalArgumentException("Event can't be null");
-        } else {
-            events[numberOfEvents++] = (Event_imp) event;
-        }
-    }
+    public String toString() {
+        String text = "";
 
-    /**
-     * This method removes an event from the edition. The event is identified by its name.
-     *
-     * @param var1 The name of the event
-     * @throws IllegalArgumentException - if event name is null or empty, or event does not exist.
-     */
-    @Override
-    public void removeEvent(String var1) {
-        if (var1 == null || var1.isEmpty()) {
-            throw new IllegalArgumentException("Event name can't be null or empty");
-        } else {
-            int[] positions = new int[numberOfEvents];
-            int found = 0;
-            for (int i = 0; i < numberOfEvents; i++) {
-                if (events[i].getName().equals(var1)) {
-                    positions[i] = 1;
-                    found++;
-                }
-            }
-            // Remove event
-            if (found > 0) {
-                Event_imp[] tmp = new Event_imp[numberOfEvents - found];
-                int tmpPosition = 0;
-                // Copy all events that are not to be removed
-                for (int i = 0; i < positions.length; i++) {
-                    if (positions[i] == 0) {
-                        tmp[tmpPosition] = events[i];
-                        tmpPosition++;
-                    }
-                }
-                events = tmp;
-                numberOfEvents--;
-            } else {
-                throw new IllegalArgumentException("Event does not exist");
-            }
+        text += "Edition: " + name + "\n"
+                + "Start: " + start + "\n"
+                + "End: " + end + "\n"
+                + "ProjectTemplate: " + projectTemplate + "\n"
+                + "Status: " + status + "\n"
+                + "Number of projects: " + numberOfProjects + "\n"
+                + "Rank: " + rankType + "\n";
+        for(int i = 0; i < numberOfProjects; i++){
+            text += projects[i].toString();
         }
-    }
-    /**
-     * This method returns an event from the edition. The event is identified by its name.
-     * @param var1 The name of the event
-     * @return The method returns an event of the edition.
-     * @throws IllegalArgumentException - if event name is null or empty, or event does not exist.
-     */
-    @Override
-    public Event getEvent(String var1) {
-        if (var1 == null || var1.isEmpty()) {
-            throw new IllegalArgumentException("Event name can't be null or empty");
-        } else {
-            for (int i = 0; i < numberOfEvents; i++) {
-                if (events[i].getName().equals(var1)) {
-                    return events[i];
-                }
-            }
-            throw new IllegalArgumentException("Event does not exist");
-        }
-    }
+        text += "\n\n";
 
-    /**
-     *  This method returns all events of the edition.
-     * @return
-     */
-    @Override
-    public Event[] getEvents() {
-        return events;
+        return text;
     }
 }

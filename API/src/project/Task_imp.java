@@ -55,7 +55,27 @@ public class Task_imp implements Task {
         this.submissions = new Submission_imp[MAXIMUM_NUMBER_OF_SUBMISSIONS];
         this.numberOfSubmissions = 0;
     }
-    //Miss
+
+    /**
+     * This construtor is used in the addTask for Menu
+     * @param startAt
+     * @param duration
+     * @param title
+     * @param description
+     * @param numberOfSubmissions
+     */
+    public Task_imp(String title, String description, int startAt, int duration, int numberOfSubmissions) {
+        int year = startAt / 10000; // Extract the year from the integer
+        int month = (startAt / 100) % 100; // Extract the month from the integer
+        int day = startAt % 100; // Extract the day from the integer
+        this.start = LocalDate.of(day, month, year);
+        this.end = start.plusDays(duration); //Calculate the end date based on start and duration
+        this.duration = duration;
+        this.title = title;
+        this.description = description;
+        this.submissions = new Submission_imp[MAXIMUM_NUMBER_OF_SUBMISSIONS];
+        this.numberOfSubmissions = numberOfSubmissions;
+    }
 
     @Override
     public LocalDate getStart() {

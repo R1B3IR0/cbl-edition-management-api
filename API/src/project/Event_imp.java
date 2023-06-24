@@ -24,9 +24,13 @@ public class Event_imp implements Event {
      * @param end   the end date of the event
      */
     public Event_imp(String name , LocalDate start, LocalDate end) {
+
+    }
+
+    public Event_imp(String name, String start, String end) {
         this.name = name;
-        this.start = start;
-        this.end = end;
+        this.start = LocalDate.parse(start);
+        this.end = LocalDate.parse(end);
         this.local = "Porto";
         this.type = EventType.KICK_OFF_MEETINGS;
     }

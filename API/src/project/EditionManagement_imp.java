@@ -1,5 +1,6 @@
 package project;
 
+import enumerations.RankType;
 import interfaces.I_EditionManagement;
 import ma02_resources.participants.*;
 import ma02_resources.project.*;
@@ -7,9 +8,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.w3c.dom.ls.LSOutput;
 import participants.*;
-import project.Edition_imp;
 
 
 import java.io.FileReader;
@@ -20,13 +19,11 @@ import java.time.LocalDateTime;
 
 public class EditionManagement_imp implements I_EditionManagement {
 
-    private String name;
     private Edition_imp[] editions;
     private int numberOfEditions;
     private final int MAXIMUM_NUMBER_OF_EDITIONS;
 
-    public EditionManagement_imp(String name) {
-        this.name = name;
+    public EditionManagement_imp() {
         this.MAXIMUM_NUMBER_OF_EDITIONS = 5;
         this.editions = new Edition_imp[MAXIMUM_NUMBER_OF_EDITIONS];
         this.numberOfEditions = 0;
@@ -200,15 +197,14 @@ public class EditionManagement_imp implements I_EditionManagement {
     public Edition[] getEditions() {
         return editions;
     }
-
+    @Override
     public Edition_imp getEdition(String name) {
-        Edition_imp edition = null;
         for (int i = 0; i < numberOfEditions; i++) {
             if (editions[i].getName().equals(name)) {
-                edition = editions[i];
+                return editions[i];
             }
         }
-        return edition;
+        throw new NullPointerException("Edition doesn't exist");
     }
 
     /**
@@ -267,12 +263,14 @@ public class EditionManagement_imp implements I_EditionManagement {
 
     /**
      * Returns the number of editions
+     *
      * @return
      */
     @Override
     public int getNumberOfEditions() {
         return numberOfEditions;
     }
+
     @Override
     public void saveEditionsToJsonFile(String filename) throws IOException {
         JSONArray arr = new JSONArray();
@@ -417,6 +415,7 @@ public class EditionManagement_imp implements I_EditionManagement {
 
     /**
      * This method return the active edition
+     *
      * @return
      */
     @Override
@@ -432,6 +431,7 @@ public class EditionManagement_imp implements I_EditionManagement {
 
     /**
      * This method return all inactive editions
+     *
      * @return
      */
     @Override
@@ -461,6 +461,7 @@ public class EditionManagement_imp implements I_EditionManagement {
 
     /**
      * This method return all closed editions
+     *
      * @return
      */
     @Override
@@ -490,6 +491,7 @@ public class EditionManagement_imp implements I_EditionManagement {
 
     /**
      * This method return all canceled editions
+     *
      * @return
      */
     @Override
@@ -516,7 +518,6 @@ public class EditionManagement_imp implements I_EditionManagement {
 
         return onlyEditions;
     }
-
 
     /**
      * This method return a participant by a specific name
@@ -697,9 +698,10 @@ public class EditionManagement_imp implements I_EditionManagement {
      *
      * @param editionName
      * @param projectName
+     * @return
      */
     @Override
-    public void addProjectToEdition(String editionName, String projectName, String description, String[] tags) {
+    public String addProjectToEdition(String editionName, String projectName, String description, String[] tags) {
         if (editionName == null || projectName == null) {
             throw new IllegalArgumentException("Edition name or project name is null");
         }
@@ -717,6 +719,7 @@ public class EditionManagement_imp implements I_EditionManagement {
         }
         try {
             getEdition(editionName).addProject(projectName, description, tags);
+            return "Project added successfully";
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (java.text.ParseException e) {
@@ -805,7 +808,33 @@ public class EditionManagement_imp implements I_EditionManagement {
         return "The project is inm " + progress + " progress, with " + completedTasks + " tasks completed.";
     }
 
+    @Override
+    public String rankOfProjects() {
+        for (int i = 0; i < numberOfEditions; i++) {
+            if (editions[i].getNumberOfProjects() >= 1  && editions[i].getNumberOfProjects() < 10) {
+                return RankType.ONE_STAR.toString();
+            } else if (editions[i].getNumberOfProjects() >= 10 && editions[i].getNumberOfProjects() < 20) {
+                return RankType.TWO_STARS.toString();
+            } else if (editions[i].getNumberOfProjects() >= 20 && editions[i].getNumberOfProjects() < 30) {
+                return RankType.THREE_STARS.toString();
+            } else if (editions[i].getNumberOfProjects() >= 30 && editions[i].getNumberOfProjects() < 40) {
+                return RankType.FOUR_STARS.toString();
+            } else if (editions[i].getNumberOfProjects() >= 40) {
+                return RankType.FIVE_STARS.toString();
+            }
+        }
+        return null;
+    }
 
+    @Override
+    public String toString() {
+        String text = "";
 
+        for(int i = 0; i < numberOfEditions; i++) {
+            text += editions[i].toString();
+
+        }
+        return text;
+    }
 }
 

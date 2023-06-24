@@ -19,7 +19,7 @@ public interface I_Edition {
     //Return all editions
     Edition[] getEditions();
 
-    //Edition getEdition(String name);
+    Edition getEdition(String name);
 
     //Return the edition with projects that have missing submissions
     Edition[] getProjectsWithMissingSubmissions();
@@ -37,5 +37,8 @@ public interface I_Edition {
     public Edition[] getAllClosedEditions();
 
     public Edition[] getAllCanceledEditions();
+
+    String rankOfProjects();
+
 
 }

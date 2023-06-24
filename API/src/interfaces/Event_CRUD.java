@@ -2,7 +2,7 @@ package interfaces;
 
 public interface Event_CRUD {
 
-    void addEvent(Event event);
+    String addEvent(Event event);
 
     void removeEvent(String var1);
 
