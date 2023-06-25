@@ -1,6 +1,7 @@
 package project;
 
 import enumerations.RankType;
+import interfaces.Event;
 import interfaces.I_EditionManagement;
 import ma02_resources.participants.*;
 import ma02_resources.project.*;
@@ -197,6 +198,7 @@ public class EditionManagement_imp implements I_EditionManagement {
     public Edition[] getEditions() {
         return editions;
     }
+
     @Override
     public Edition_imp getEdition(String name) {
         for (int i = 0; i < numberOfEditions; i++) {
@@ -643,6 +645,12 @@ public class EditionManagement_imp implements I_EditionManagement {
         return -1;
     }
 
+    /**
+     * This method should be possible get the students with more submissions in a project.
+     *
+     * @param edition
+     * @param project
+     */
     @Override
     public String getSudentsWithMoreSubmissions(Edition edition, Project project) {
         String[] students = new String[project.getMaximumNumberOfStudents()];
@@ -769,13 +777,81 @@ public class EditionManagement_imp implements I_EditionManagement {
         }
     }
 
+    /**
+     * This method returns a project by name
+     *
+     * @param projectName
+     */
+    @Override
+    public Project getProject(String projectName) {
+        for (int i = 0; i < numberOfEditions; i++) {
+            if (editions[i].getProject(projectName) != null) {
+                return editions[i].getProject(projectName);
+            }
+        }
 
+        throw new NullPointerException("Project not found!");
+
+    }
+
+    /**
+     * This method should be possible to return the last three submissions of a task
+     *
+     * @param task
+     */
+    @Override
+    public Submission[] getLastThreeSubmissions(Task task) {
+        if (task == null) {
+            throw new IllegalArgumentException("Task is null");
+        } else {
+            Submission[] lastThreeSubmissions = new Submission[3];
+            int lastThreeSubmissionsIndex = 0;
+
+            for (int i = task.getNumberOfSubmissions() - 1; i >= 0; i--) {
+                lastThreeSubmissions[lastThreeSubmissionsIndex] = task.getSubmissions()[i];
+                lastThreeSubmissionsIndex++;
+                if (lastThreeSubmissionsIndex == 3) {
+                    break;
+                }
+            }
+            return lastThreeSubmissions;
+        }
+    }
+
+    /**
+     * This method shoud return tasks from project that have the specified end date
+     *
+     * @param project
+     * @param date
+     * @return
+     */
+    @Override
+    public Task[] getTasksByDate(Project project, LocalDate date) {
+        if (project == null || date == null) {
+            throw new IllegalArgumentException("Project or date is null");
+        } else {
+            Task[] tasksByDate = new Task[project.getMaximumNumberOfTasks()];
+            int counter = 0;
+
+            for (Task task : project.getTasks()) {
+                if (task != null && task.getStart().equals(date)) {
+                    tasksByDate[counter] = task;
+                    counter++;
+                }
+            }
+
+            Task[] result = new Task[counter];
+            System.arraycopy(tasksByDate, 0, result, 0, counter);
+
+            return result;
+        }
+    }
 
 
     @Override
     public String rankOfProjects() {
         for (int i = 0; i < numberOfEditions; i++) {
-            if (editions[i].getNumberOfProjects() >= 1  && editions[i].getNumberOfProjects() < 10) {
+            if (editions[i].getNumberOfProjects() >= 1 && editions[i].getNumberOfProjects() < 10) {
                 return RankType.ONE_STAR.toString();
             } else if (editions[i].getNumberOfProjects() >= 10 && editions[i].getNumberOfProjects() < 20) {
                 return RankType.TWO_STARS.toString();
@@ -833,7 +909,7 @@ public class EditionManagement_imp implements I_EditionManagement {
     public String toString() {
         String text = "";
 
-        for(int i = 0; i < numberOfEditions; i++) {
+        for (int i = 0; i < numberOfEditions; i++) {
             text += editions[i].toString();
 
         }

@@ -26,10 +26,6 @@ public class ControlPanel {
 
     private I_EditionManagement editions;
 
-
-
-
-
     public ControlPanel() {
         scanner = new Scanner(System.in);
         editions = new EditionManagement_imp();

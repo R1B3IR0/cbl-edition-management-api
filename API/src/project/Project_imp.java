@@ -1,8 +1,5 @@
 package project;
 
-import enumerations.EventType;
-import interfaces.Event;
-import interfaces.Event_CRUD;
 import ma02_resources.participants.Participant;
 import ma02_resources.project.Project;
 import ma02_resources.project.Task;
@@ -18,7 +15,7 @@ import participants.Student_imp;
 import java.util.Arrays;
 
 
-public class Project_imp implements Project, Event_CRUD {
+public class Project_imp implements Project {
 
     private String name;
     private String description;
@@ -36,11 +33,7 @@ public class Project_imp implements Project, Event_CRUD {
     private String[] tags;
     private Task_imp[] tasks;
     private boolean hasTags;
-    private Event_imp[] events;
-    private EventType type;
-    private int numberOfEvents;
 
-    private final int MAXIMUM_NUMBER_OF_EVENTS = 5;
 
     /**
      * Constructor of the class Project_imp
@@ -118,25 +111,6 @@ public class Project_imp implements Project, Event_CRUD {
         this.tasks = tasks;
         this.participants = new Participant_imp[numberOfParticipants];
         this.hasTags = (tags == null) ? false : true;
-    }
-
-    public Project_imp(String name, String description, int numberOfStudents, int numberOfPartners,
-                       int numberOfFacilitators, Participant_imp[] participants, String[] tags, Task_imp[] tasks, Event_imp[] events, EventType type,
-                       int numberOfEvents) {
-        this.name = name;
-        this.description = description;
-        this.numberOfStudents = numberOfStudents;
-        this.numberOfPartners = numberOfPartners;
-        this.numberOfFacilitators = numberOfFacilitators;
-        this.participants = participants;
-        this.tags = tags;
-        this.tasks = tasks;
-        this.numberOfParticipants = participants.length;
-        this.numberOfTasks = tasks.length;
-        this.hasTags = (tags == null) ? false : true;
-        this.events = events;
-        this.type = type;
-        this.numberOfEvents = numberOfEvents;
     }
 
     @Override
@@ -426,10 +400,6 @@ public class Project_imp implements Project, Event_CRUD {
         return numberOfTags;
     }
 
-    public EventType getType() {
-        return type;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -481,93 +451,8 @@ public class Project_imp implements Project, Event_CRUD {
         return text;
     }
 
-    /**
-     * This method adds an event to the edition.
-     *
-     * @return
-     */
-    @Override
-    public String addEvent(Event event) {
-        if (event == null) {
-            throw new IllegalArgumentException("Event can't be null");
-        } else {
-            events[numberOfEvents++] = (Event_imp) event;
-            return "Event added";
-        }
 
-    }
 
-    /**
-     * This method removes an event from the edition. The event is identified by its name.
-     *
-     * @param var1 The name of the event
-     * @return
-     * @throws IllegalArgumentException - if event name is null or empty, or event does not exist.
-     */
-    @Override
-    public String removeEvent(String var1) {
-        if (var1 == null || var1.isEmpty()) {
-            throw new IllegalArgumentException("Event name can't be null or empty");
-        } else {
-            int[] positions = new int[numberOfEvents];
-            int found = 0;
-            for (int i = 0; i < numberOfEvents; i++) {
-                if (events[i].getName().equals(var1)) {
-                    positions[i] = 1;
-                    found++;
-                }
-            }
-            // Remove event
-            if (found > 0) {
-                Event_imp[] tmp = new Event_imp[numberOfEvents - found];
-                int tmpPosition = 0;
-                // Copy all events that are not to be removed
-                for (int i = 0; i < positions.length; i++) {
-                    if (positions[i] == 0) {
-                        tmp[tmpPosition] = events[i];
-                        tmpPosition++;
-                    }
-                }
-                events = tmp;
-                numberOfEvents--;
-                return "Event removed";
-            } else {
-                throw new IllegalArgumentException("Event does not exist");
-            }
-        }
-
-    }
-
-    /**
-     * This method returns an event from the edition. The event is identified by its name.
-     *
-     * @param var1 The name of the event
-     * @return The method returns an event of the edition.
-     * @throws IllegalArgumentException - if event name is null or empty, or event does not exist.
-     */
-    @Override
-    public Event getEvent(String var1) {
-        if (var1 == null || var1.isEmpty()) {
-            throw new IllegalArgumentException("Event name can't be null or empty");
-        } else {
-            for (int i = 0; i < numberOfEvents; i++) {
-                if (events[i].getName().equals(var1)) {
-                    return events[i];
-                }
-            }
-            throw new IllegalArgumentException("Event does not exist");
-        }
-    }
-
-    /**
-     * This method returns all events of the edition.
-     *
-     * @return
-     */
-    @Override
-    public Event[] getEvents() {
-        return events;
-    }
 }
 
 

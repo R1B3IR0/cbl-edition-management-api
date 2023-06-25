@@ -38,6 +38,7 @@ public class AdminMenu implements Display {
                     }
                     break;
                 case 3:
+                    OtherListsMenu.display(control);
                     break;
                 case 4:
                     isRunning = false;

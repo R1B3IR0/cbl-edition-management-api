@@ -55,9 +55,9 @@ public class Submission_imp implements Submission {
     public String toString() {
         String text = "";
 
-        text += "Submission: " + date + "\n"
-                + "Student: " + student + "\n"
-                + "Text: " + this.text + "\n";
+        text += "\tSubmission: " + date + "\n"
+                + "\tStudent: " + student + "\n"
+                + "\tText: " + this.text + "\n";
         return text;
     }
 }

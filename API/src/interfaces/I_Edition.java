@@ -6,6 +6,10 @@ import ma02_resources.participants.Student;
 import ma02_resources.project.Edition;
 import ma02_resources.project.Project;
 import ma02_resources.project.Submission;
+import ma02_resources.project.Task;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public interface I_Edition {
 
@@ -65,4 +69,12 @@ public interface I_Edition {
 
     //Return the number of projects about a specific edition
     int getNumberOfProjects(String editionName);
+
+    //Get Project by name
+    Project getProject(String projectName);
+
+    //Return last three submissions of a specific task
+    public Submission[] getLastThreeSubmissions(Task task);
+
+    Task[] getTasksByDate(Project project, LocalDate date);
 }
