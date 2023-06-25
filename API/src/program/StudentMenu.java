@@ -5,6 +5,10 @@ import ma02_resources.project.*;
 import participants.Student_imp;
 import project.Submission_imp;
 
+/**
+ * Classe responsável por exibir o menu na consola.
+ */
+
 public class StudentMenu implements Display {
     private Student student;
 
@@ -30,6 +34,11 @@ public class StudentMenu implements Display {
         System.out.println("\t||                0 - Back                                  ||");
         System.out.println("\t==============================================================");
     }
+
+    /**
+     * Função responsável por exibir o menu do projeto e gerenciar as opções escolhidas pelo utilizador.
+     * @param control .
+     */
 
     public void display(ControlPanel control) {
         boolean isRunning = true;

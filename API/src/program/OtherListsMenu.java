@@ -6,6 +6,10 @@ import ma02_resources.project.Task;
 
 import java.time.LocalDate;
 
+/**
+ * Classe responsável por exibir o menu principal do sistema.
+ */
+
 public class OtherListsMenu implements Display{
     @Override
     public void display() {
@@ -17,6 +21,11 @@ public class OtherListsMenu implements Display{
         System.out.println("\t||      0 - Back                              ||");
         System.out.println("\t================================================");
     }
+
+    /**
+     * Função responsável por exibir o menu de outras listas do sistema e gerenciar as opções escolhidas pelo utilizador.
+     * @param control .
+     */
 
     public  static void display(ControlPanel control) {
         Display menuOtherLists = new OtherListsMenu();

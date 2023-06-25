@@ -1,5 +1,8 @@
 package enumerations;
 
+/**
+ * Enumeração EventType
+ */
 public enum EventType {
     KICK_OFF_MEETINGS,
     PITCHES,

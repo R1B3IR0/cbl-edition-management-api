@@ -4,6 +4,14 @@ import enumerations.EventType;
 
 import java.time.LocalDate;
 
+/**
+ * Interface Event que retorna:
+ * -getName
+ * -getStart
+ * -gentEnd
+ * -getLocal
+ * -getType
+ */
 public interface Event {
 
     String getName();

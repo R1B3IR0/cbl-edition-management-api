@@ -4,6 +4,10 @@ import ma02_resources.participants.Student;
 import ma02_resources.project.Edition;
 import ma02_resources.project.Project;
 
+/**
+ * Classe responsável por exibir o menu na consola.
+ */
+
 public class MainMenu implements Display {
     @Override
     public void display() {
@@ -16,9 +20,8 @@ public class MainMenu implements Display {
     }
 
     /**
-     * Displays the start menu and handles user input.*
-     *
-     * @param control the menu manager
+     * Função responsável por exibir o menu principal do sistema e gerenciar as opções escolhidas pelo utilizador.
+     * @param control .
      */
     public static void display(ControlPanel control) {
         Display menuStart = new MainMenu();

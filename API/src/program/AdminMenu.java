@@ -1,5 +1,9 @@
 package program;
 
+/**
+ * Exibe o menu de administração na consola.
+ */
+
 public class AdminMenu implements Display {
 
     @Override
@@ -9,11 +13,17 @@ public class AdminMenu implements Display {
         System.out.println("\t    1 - Edition Management  ");
         System.out.println("\t    2 - Project Management  ");
         System.out.println("\t    3 - Lists               ");
-        System.out.println("\t    4 - Exit                ");
+        System.out.println("\t    0 - Exit                ");
         System.out.println("\t===============================");
 
     }
 
+
+    /**
+     * Exibe o menu de administração, usando um objeto ControlPanel para interação.
+     *
+     * @param control
+     */
     public static void display(ControlPanel control) {
         Display menuAdmin = new AdminMenu();
         boolean isRunning = true;
@@ -40,7 +50,7 @@ public class AdminMenu implements Display {
                 case 3:
                     OtherListsMenu.display(control);
                     break;
-                case 4:
+                case 0:
                     isRunning = false;
                     break;
                 default:

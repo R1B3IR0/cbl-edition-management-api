@@ -36,19 +36,18 @@ public class Project_imp implements Project {
 
 
     /**
-     * Constructor of the class Project_imp
-     * Used to create a project form the given parameters or other files
+     * Constrói um objeto Project_imp com os dados fornecidos.
      *
-     * @param name                 the name of the project
-     * @param description          the description of the project
-     * @param numberOfParticipants the number of participants in the project
-     * @param numberOfStudents     the number of students in the project
-     * @param numberOfPartners     the number of partners in the project
-     * @param numberOfFacilitators the number of facilitators in the project
-     * @param numberOfTasks        the number of tasks in the project
-     * @param participants         the array of participants in the project
-     * @param tags                 the array of tags associated with the project
-     * @param tasks                the array of tasks in the project
+     * @param name                 O nome do projeto.
+     * @param description          A descrição do projeto.
+     * @param numberOfParticipants O número total de participantes do projeto.
+     * @param numberOfStudents     O número de estudantes envolvidos no projeto.
+     * @param numberOfPartners     O número de parceiros envolvidos no projeto.
+     * @param numberOfFacilitators O número de facilitadores envolvidos no projeto.
+     * @param numberOfTasks        O número de tarefas do projeto.
+     * @param participants         Os participantes do projeto.
+     * @param tags                 As tags associadas ao projeto.
+     * @param tasks                As tarefas do projeto.
      */
     public Project_imp(String name, String description, int numberOfParticipants, int numberOfStudents,
                        int numberOfPartners, int numberOfFacilitators, int numberOfTasks, Participant_imp[] participants,
@@ -67,11 +66,11 @@ public class Project_imp implements Project {
     }
 
     /**
-     * Constructor of the class Project_imp
+     * Constrói um objeto Project_imp com os dados fornecidos.
      *
-     * @param name        the name of the project
-     * @param description the description of the project
-     * @param tags        the array of tags associated with the project
+     * @param name        O nome do projeto.
+     * @param description A descrição do projeto.
+     * @param tags        As tags associadas ao projeto.
      */
     public Project_imp(String name, String description, String[] tags) {
         this.name = name;
@@ -86,17 +85,17 @@ public class Project_imp implements Project {
     }
 
     /**
-     * This constructor is used in the {@code addProject} method in the class {@code Edition_imp}
+     * Constrói um objeto Project_imp com os dados fornecidos.
      *
-     * @param name
-     * @param description
-     * @param numberOfParticipants
-     * @param numberOfPartners
-     * @param numberOfFacilitators
-     * @param numberOfStudents
-     * @param numberOfTasks
-     * @param tags
-     * @param tasks
+     * @param name                  O nome do projeto.
+     * @param description           A descrição do projeto.
+     * @param numberOfParticipants  O número de participantes do projeto.
+     * @param numberOfPartners      O número de parceiros do projeto.
+     * @param numberOfFacilitators  O número de facilitadores do projeto.
+     * @param numberOfStudents      O número de estudantes do projeto.
+     * @param numberOfTasks         O número de tarefas do projeto.
+     * @param tags                  As tags associadas ao projeto.
+     * @param tasks                 As tarefas do projeto.
      */
     public Project_imp(String name, String description, int numberOfParticipants, int numberOfPartners,
                        int numberOfFacilitators, int numberOfStudents, int numberOfTasks, String[] tags, Task_imp[] tasks) {
@@ -173,11 +172,12 @@ public class Project_imp implements Project {
         return MAXIMUM_NUMBER_OF_FACILITATORS;
     }
 
-    /***
-     * This method adds a participant to the project  and if array is full it doubles the size of the array
-     * @param participant
-     * @throws IllegalNumberOfParticipantType
-     * @throws ParticipantAlreadyInProject
+    /**
+     * Adiciona um participante ao projeto.
+     *
+     * @param participant O participante a ser adicionado.
+     * @throws IllegalNumberOfParticipantType Caso o número máximo de participantes do tipo seja atingido.
+     * @throws ParticipantAlreadyInProject    Caso o participante já esteja no projeto.
      */
     @Override
     public void addParticipant(Participant participant) throws IllegalNumberOfParticipantType, ParticipantAlreadyInProject {
@@ -228,6 +228,14 @@ public class Project_imp implements Project {
         }
     }
 
+    /**
+     * Remove um participante do projeto com base no seu endereço de e-mail.
+     *
+     * @param email O endereço de e-mail do participante a ser removido.
+     * @return O participante removido.
+     * @throws IllegalArgumentException Caso o participante não seja encontrado.
+     */
+
     @Override
     public Participant removeParticipant(String s) {
         int[] positions = new int[numberOfParticipants];
@@ -269,6 +277,15 @@ public class Project_imp implements Project {
         }
     }
 
+    /**
+     * Obtém o participante com base em seu endereço de e-mail.
+     *
+     * @param email O endereço de e-mail do participante a ser obtido.
+     * @return O participante correspondente ao endereço de e-mail fornecido.
+     * @throws NullPointerException      Caso a lista de participantes seja nula.
+     * @throws IllegalArgumentException Caso o participante não seja encontrado.
+     */
+
     @Override
     public Participant getParticipant(String s) {
         if (participants == null) {
@@ -283,9 +300,22 @@ public class Project_imp implements Project {
         throw new IllegalArgumentException("Participant not found");
     }
 
+    /**
+     * Obtém todos os participantes do projeto.
+     *
+     * @return Um array contendo todos os participantes do projeto.
+     */
+
     public Participant_imp[] getParticipants() {
         return participants;
     }
+
+    /**
+     * Obtém as tags associadas ao projeto.
+     *
+     * @return Um array contendo as tags associadas ao projeto.
+     * @throws NullPointerException Se a lista de tags for nula.
+     */
 
     @Override
     public String[] getTags() {
@@ -347,6 +377,12 @@ public class Project_imp implements Project {
         }
     }
 
+    /**
+     *
+     * @param task
+     * @return
+     */
+
     @Override
     public Task getTask(String task) {
         if (tasks == null) {
@@ -400,6 +436,12 @@ public class Project_imp implements Project {
         return numberOfTags;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -427,6 +469,11 @@ public class Project_imp implements Project {
 
         return equal;
     }
+
+    /**
+     *
+     * @return
+     */
 
     @Override
     public String toString() {

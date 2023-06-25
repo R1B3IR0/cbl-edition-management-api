@@ -9,6 +9,10 @@ import project.EditionManagement_imp;
 import project.Edition_imp;
 import project.Project_imp;
 
+/**
+ * Classe responsável por exibir o menu na consola.
+ */
+
 public class ProjectMenu implements Display {
 
     private Edition edition;
@@ -45,6 +49,12 @@ public class ProjectMenu implements Display {
         System.out.println("\t    0 - Exit                  ");
         System.out.println("\t===============================");
     }
+
+
+    /**
+     * Função responsável por exibir o menu do projeto e gerenciar as opções escolhidas pelo utilizador.
+     * @param control .
+     */
 
     public void display(ControlPanel control) {
         boolean isRunning = true;

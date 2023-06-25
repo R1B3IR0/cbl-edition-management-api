@@ -1,5 +1,8 @@
 package enumerations;
 
+/**
+ * Enumeração RankType
+ */
 public enum RankType {
     ONE_STAR,
     TWO_STARS,

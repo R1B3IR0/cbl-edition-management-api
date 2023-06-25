@@ -26,10 +26,23 @@ public class ControlPanel {
 
     private I_EditionManagement editions;
 
+    /**
+     * Construtor da classe ControlPanel.
+     * Inicializa o objeto Scanner para leitura de entrada do utilizador
+     * e o objeto editions para gerenciamento das edições.
+     */
+
     public ControlPanel() {
         scanner = new Scanner(System.in);
         editions = new EditionManagement_imp();
     }
+
+    /**
+     * Mostra um menu para obter a escolha do utilizador.
+     *
+     * @param menu O objeto de menu a ser exibido.
+     * @return A escolha do utilizador.
+     */
 
     public int displayMenu(Display menu) {
         int choice;
@@ -38,6 +51,13 @@ public class ControlPanel {
         return choice;
     }
 
+    /**
+     * Obtém uma entrada de string do utilizador.
+     *
+     * @param msg A mensagem a ser exibida para solicitar a entrada do utilizador.
+     * @return A string inserida pelo utilizador.
+     */
+
     public String getUserInputString(String msg) {
         System.out.print(msg);
 
@@ -45,6 +65,14 @@ public class ControlPanel {
 
         return input;
     }
+
+    /**
+     * Obtém uma entrada numérica do utilizador dentro de um intervalo específico.
+     *
+     * @param msg A mensagem a ser exibida para solicitar a entrada do utilizador.
+     * @param max O valor máximo permitido para a entrada.
+     * @return O número inserido pelo utilizador.
+     */
 
     public int getUserInputInt(String msg, int max) {
         int choice = -1;
@@ -62,6 +90,14 @@ public class ControlPanel {
         return choice;
     }
 
+    /**
+     * Obtém uma data inserida pelo utilizador no formato "YYYY-MM-DD".
+     *
+     * @param msg A mensagem a ser exibida para solicitar a entrada do utilizador.
+     * @return A data inserida pelo utilizador no formato LocalDate.
+     * @throws DateTimeParseException Se a data inserida não estiver no formato válido.
+     */
+
     public LocalDate getUserInputLocalDate(String msg) {
         System.out.print(msg + " in the format (YYYY-MM-DD): ");
 
@@ -71,6 +107,13 @@ public class ControlPanel {
 
         return date;
     }
+
+    /**
+     * Obtém a escolha do utilizador a partir da entrada da consola.
+     *
+     * @return A escolha do utlizador como um número inteiro.
+     * @throws InputMismatchException Se a entrada do utilizador não for um número inteiro válido.
+     */
 
     private int getUserChoice() {
         System.out.print("Enter your choice: ");
@@ -90,9 +133,21 @@ public class ControlPanel {
         return choice;
     }
 
+    /**
+     * Obtém a instância de edições.
+     *
+     * @return A instância de edições.
+     */
+
     public I_Edition getEditions() {
         return editions;
     }
+
+    /**
+     * Obtém as informações de contato inseridas pelo utilizador.
+     *
+     * @return Uma instância de contato com as informações inseridas.
+     */
 
     public Contact getInfoContact() {
         String street = getUserInputString("Name of street: ");
@@ -106,6 +161,12 @@ public class ControlPanel {
         return new Contact_imp(street, city, state, zipCode, country, phone);
     }
 
+    /**
+     * Obtém o tipo de instituição inserido pelo utilizador.
+     *
+     * @return o tipo de instituição selecionado pelo utilizador.
+     */
+
     public InstituitionType getInfoInstituitionType() {
         System.out.println("Instituition Types:");
 
@@ -116,6 +177,12 @@ public class ControlPanel {
         int choice = getUserInputInt("Enter the instituition type: ", InstituitionType.values().length);
         return InstituitionType.values()[choice];
     }
+
+    /**
+     * Obtém as informações da instituição inseridas pelo utilizador.
+     *
+     * @return A instância de Instituition contendo as informações inseridas pelo utilizador.
+     */
 
     public Instituition getInfoInstituition() {
         String name = getUserInputString("Enter the instituition name: ");
@@ -129,6 +196,12 @@ public class ControlPanel {
     }
 
 
+    /**
+     * Obtém as informações do estudante inseridas pelo utilizador.
+     *
+     * @return A instância de Student contendo as informações inseridas pelo utilizador.
+     */
+
     public Student getInfoStudent() {
         int number = getUserInputInt("Enter the student number: ", Integer.MAX_VALUE);
         String name = getUserInputString("Enter the student name: ");
@@ -141,6 +214,12 @@ public class ControlPanel {
         return new Student_imp(name, email, (Contact_imp) contact, (Instituition_imp) instituition, number);
     }
 
+    /**
+     * Obtém as informações da tarefa inseridas pelo utilizador.
+     *
+     * @return A instância de Task contendo as informações inseridas pelo utilizador.
+     */
+
     public Task getInfoTask() {
         String title = getUserInputString("Enter the task title: ");
         String description = getUserInputString("Enter the task description: ");
@@ -151,6 +230,12 @@ public class ControlPanel {
         return new Task_imp(title, description, start, duration, maxSubmissions);
     }
 
+
+    /**
+     * Obtém as informações do evento inseridas pelo utilizador.
+     *
+     * @return A instância de Event contendo as informações inseridas pelo utilizador.
+     */
     public Event getInfoEvent() {
         String name = getUserInputString("Enter the event name: ");
         String start = String.valueOf(getUserInputLocalDate("Enter the event start date: "));

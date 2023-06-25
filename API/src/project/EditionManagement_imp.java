@@ -31,10 +31,9 @@ public class EditionManagement_imp implements I_EditionManagement {
     }
 
     /**
-     * Method to add a new edition
+     * Adiciona uma edição ao sistema.
      *
-     * @param edition
-     * @return
+     * @param edition A edição a ser adicionada.
      */
     @Override
     public void addEdition(Edition edition) {
@@ -58,10 +57,9 @@ public class EditionManagement_imp implements I_EditionManagement {
     }
 
     /**
-     * Method to remove an edition by name
+     * Remove uma edição do sistema com base no nome.
      *
-     * @param name
-     * @return
+     * @param name O nome da edição a ser removida.
      */
     @Override
     public void removeEdition(String name) {
@@ -93,10 +91,10 @@ public class EditionManagement_imp implements I_EditionManagement {
     }
 
     /**
-     * Find edition by name
+     * Encontra a posição de uma edição com base no nome.
      *
-     * @param name
-     * @return
+     * @param name O nome da edição a ser encontrada.
+     * @return A posição da edição no array ou -1 se não for encontrada.
      */
     private int find(String name) {
         int pos = -1;
@@ -113,10 +111,9 @@ public class EditionManagement_imp implements I_EditionManagement {
     }
 
     /**
-     * Method to define only one edition as active by a specific name
+     * Define uma edição como ativa.
      *
-     * @param name
-     * @return
+     * @param name O nome da edição a ser definida como ativa.
      */
     @Override
     public void defineAsActive(String name) {
@@ -135,10 +132,10 @@ public class EditionManagement_imp implements I_EditionManagement {
     }
 
     /**
-     * Method to define an edition as inactive by a specific name
+     * Define uma edição como inativa.
      *
-     * @param name
-     * @return
+     * @param name O nome da edição a ser definida como inativa.
+     * @throws IllegalArgumentException Se o nome da edição for nulo ou se a edição não existir no array.
      */
     @Override
     public void defineAsInactive(String name) {
@@ -154,10 +151,10 @@ public class EditionManagement_imp implements I_EditionManagement {
     }
 
     /**
-     * Method to define an edition as canceled by a specific name
+     * Define uma edição como cancelada.
      *
-     * @param name
-     * @return
+     * @param name O nome da edição a ser definida como cancelada.
+     * @throws IllegalArgumentException Se o nome da edição for nulo ou se a edição não existir no array.
      */
     @Override
     public void defineAsCanceled(String name) {
@@ -172,10 +169,10 @@ public class EditionManagement_imp implements I_EditionManagement {
     }
 
     /**
-     * Method to define an edition as closed by a specific name
+     * Define uma edição como encerrada.
      *
-     * @param name
-     * @return
+     * @param name O nome da edição a ser definida como encerrada.
+     * @throws IllegalArgumentException Se o nome da edição for nulo ou se a edição não existir no array.
      */
     @Override
     public void defineAsClosed(String name) {
@@ -199,6 +196,14 @@ public class EditionManagement_imp implements I_EditionManagement {
         return editions;
     }
 
+    /**
+     * Retorna a edição correspondente ao nome especificado.
+     *
+     * @param name O nome da edição a ser obtida.
+     * @return A edição correspondente ao nome especificado.
+     * @throws NullPointerException Se a edição não existir no array.
+     */
+
     @Override
     public Edition_imp getEdition(String name) {
         for (int i = 0; i < numberOfEditions; i++) {
@@ -209,11 +214,13 @@ public class EditionManagement_imp implements I_EditionManagement {
         throw new NullPointerException("Edition doesn't exist");
     }
 
+
     /**
-     * This method returns all editions that have projects with tasks that have missing submissions
+     * Retorna um array contendo as edições que possuem projetos com submissões ausentes.
      *
-     * @return Edition[]
+     * @return Um array contendo as edições com submissões ausentes.
      */
+
     @Override
     public Edition[] getProjectsWithMissingSubmissions() {
         Edition[] editionsWithMissingSubmissions = new Edition[MAXIMUM_NUMBER_OF_EDITIONS];
@@ -235,16 +242,10 @@ public class EditionManagement_imp implements I_EditionManagement {
 
 
     /**
-     * Retrieves the progress of the edition as a percentage.
-     * <p>
-     * The progress is calculated based on the completion status of the projects
-     * <p>
-     * in the edition. The completed projects are counted, and the progress is
-     * <p>
-     * expressed as a percentage of the total number of projects.
+     * Retorna o progresso da edição especificada como uma porcentagem.
      *
-     * @param edition the edition for which the progress is calculated
-     * @return a string representation of the edition progress in percentage
+     * @param edition A edição para a qual o progresso será calculado.
+     * @return Uma string representando o progresso da edição em porcentagem.
      */
     @Override
     public String getEditionProgress(Edition edition) {
@@ -273,6 +274,13 @@ public class EditionManagement_imp implements I_EditionManagement {
         return numberOfEditions;
     }
 
+    /**
+     * Guarda as edições em um arquivo JSON.
+     *
+     * @param filename O nome do arquivo onde as edições serão guardadas.
+     * @throws IOException Se ocorrer um erro durante a escrita do arquivo.
+     */
+
     @Override
     public void saveEditionsToJsonFile(String filename) throws IOException {
         JSONArray arr = new JSONArray();
@@ -296,6 +304,14 @@ public class EditionManagement_imp implements I_EditionManagement {
         out.flush();
         out.close();
     }
+
+    /**
+     * Lê as edições de um arquivo JSON.
+     *
+     * @param filename O nome do arquivo JSON a ser lido.
+     * @throws IOException    Se ocorrer um erro durante a leitura do arquivo.
+     * @throws ParseException Se ocorrer um erro durante o parsing do JSON.
+     */
 
     @Override
     public void readEditionsFromJsonFile(String filename) throws IOException, ParseException {
@@ -904,6 +920,12 @@ public class EditionManagement_imp implements I_EditionManagement {
 
         return "The project is inm " + progress + " progress, with " + completedTasks + " tasks completed.";
     }
+
+    /**
+     * Retorna uma representação em formato de string das edições.
+     *
+     * @return Uma string contendo as representações das edições.
+     */
 
     @Override
     public String toString() {

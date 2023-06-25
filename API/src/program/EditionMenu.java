@@ -5,6 +5,10 @@ import project.Edition_imp;
 
 import java.time.LocalDate;
 
+/**
+ * Classe responsável por exibir o menu na consola.
+ */
+
 public class EditionMenu implements Display {
 
     @Override
@@ -26,7 +30,7 @@ public class EditionMenu implements Display {
                 "missing submissions on tasks");
         System.out.println("\t    13 - Number of existing editions");
         System.out.println("\t    14 - Progress from edition");
-        System.out.println("\t    15 - Exit                 ");
+        System.out.println("\t    0 - Exit                 ");
         System.out.println("\t===============================");
     }
 
@@ -201,7 +205,7 @@ public class EditionMenu implements Display {
                         System.out.println("An error has occurred: " + e.getMessage());
                     }
                     break;
-                case 15:
+                case 0:
                     isRunning = false;
                     break;
                 default:

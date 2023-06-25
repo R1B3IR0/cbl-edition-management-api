@@ -11,6 +11,9 @@ import ma02_resources.project.Task;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+/**
+ * Interface I_edition
+ */
 public interface I_Edition {
 
     public void addEdition(Edition edition);

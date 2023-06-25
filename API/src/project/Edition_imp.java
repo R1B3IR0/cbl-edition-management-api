@@ -37,6 +37,16 @@ public class Edition_imp implements Edition, Event_CRUD {
 
     private final int MAXIMUM_NUMBER_OF_EVENTS = 5;
 
+    /**
+     * Construtor da classe Edition_imp.
+     * @param name O nome da edição.
+     * @param start A data de início da edição.
+     * @param end A data de término da edição.
+     * @param projectTemplate O template do projeto.
+     * @param status O status da edição.
+     * @param projects Os projetos da edição.
+     */
+
     public Edition_imp(String name, LocalDate start, LocalDate end, String projectTemplate, Status status,
                        Project_imp[] projects) {
         this.name = name;
@@ -48,6 +58,16 @@ public class Edition_imp implements Edition, Event_CRUD {
         this.numberOfProjects = projects.length;
     }
 
+    /**
+     * Construtor da classe Edition_imp.
+     * @param name O nome da edição.
+     * @param start A data de início da edição.
+     * @param end A data de término da edição.
+     * @param projectTemplate O template do projeto.
+     * @param projects Os projetos da edição.
+     * @param numberOfProjects O número de projetos da edição.
+     */
+
     public Edition_imp(String name, LocalDate start, LocalDate end, String projectTemplate, Project_imp[] projects,
                        int numberOfProjects) {
         this.name = name;
@@ -58,6 +78,15 @@ public class Edition_imp implements Edition, Event_CRUD {
         this.projects = new Project_imp[numberOfProjects];
         this.numberOfProjects = numberOfProjects;
     }
+
+    /**
+     * Construtor da classe Edition_imp.
+     * @param name O nome da edição.
+     * @param start A data de início da edição.
+     * @param end A data de término da edição.
+     * @param projectTemplate O template do projeto.
+     * @param rankType O tipo de classificação da edição.
+     */
 
     public Edition_imp(String name, LocalDate start, LocalDate end, String projectTemplate, RankType rankType) {
         this.name = name;
@@ -71,13 +100,13 @@ public class Edition_imp implements Edition, Event_CRUD {
     }
 
     /**
-     * This constructor is used to create an edition //from a JSON file//.
-     *
-     * @param name            name of the edition
-     * @param projectTemplate project template of the edition
-     * @param start           start date of the edition
-     * @param end             end date of the edition
+     * Construtor da classe Edition_imp.
+     * @param name O nome da edição.
+     * @param projectTemplate O template do projeto.
+     * @param start A data de início da edição.
+     * @param end A data de término da edição.
      */
+
     public Edition_imp(String name, String projectTemplate, LocalDate start, LocalDate end) {
         this.name = name;
         this.start = start;
@@ -105,25 +134,51 @@ public class Edition_imp implements Edition, Event_CRUD {
         return MAXIMUM_NUMBER_OF_EVENTS;
     }
 
+
+    /**
+     * Retorna o nome do objeto.
+     * @return O nome do objeto.
+     */
     @Override
     public String getName() {
         return name;
     }
+
+    /**
+     * Retorna a data de início do objeto.
+     * @return A data de início do objeto.
+     */
 
     @Override
     public LocalDate getStart() {
         return start;
     }
 
+    /**
+     * Retorna o modelo de projeto do objeto.
+     * @return O modelo de projeto do objeto.
+     */
+
     @Override
     public String getProjectTemplate() {
         return projectTemplate;
     }
 
+    /**
+     * Retorna o status do objeto.
+     * @return O status do objeto.
+     */
+
     @Override
     public Status getStatus() {
         return status;
     }
+
+    /**
+     * Define o status do objeto.
+     * @param status O status a ser definido.
+     * @throws IllegalArgumentException se o status fornecido for nulo.
+     */
 
     @Override
     public void setStatus(Status status) {
@@ -134,19 +189,22 @@ public class Edition_imp implements Edition, Event_CRUD {
         }
     }
 
+    /**
+     * Retorna o número máximo de projetos permitidos.
+     * @return O número máximo de projetos permitidos.
+     */
+
     public int getMAXIMUM_NUMBER_OF_PROJECTS() {
         return MAXIMUM_NUMBER_OF_PROJECTS;
     }
 
     /**
-     * This method adds a project to the edition. The project is created from a projectTemplate.
-     *
-     * @param name        name of the project
-     * @param description description of the project
-     * @param tags        tags of the project
-     * @throws IOException    - if the project template is not found.
-     * @throws ParseException - if the project template is not valid
-     * @theows IllegalArgumentException -  if the project name is null or empty, if the project already exists, if the description is null or empty, if the tags are null or empty.
+     * Adiciona um novo projeto.
+     * @param name O nome do projeto.
+     * @param description A descrição do projeto.
+     * @param tags As tags do projeto.
+     * @throws IOException Se ocorrer um erro de leitura ou se os parâmetros forem inválidos.
+     * @throws ParseException Se ocorrer um erro ao analisar o modelo do projeto.
      */
     @Override
     public void addProject(String name, String description, String[] tags) throws IOException, ParseException {
@@ -203,6 +261,13 @@ public class Edition_imp implements Edition, Event_CRUD {
         }
     }
 
+    /**
+     * Obtém as tarefas a partir do objeto JSON.
+     * @param jsonObject O objeto JSON contendo os dados das tarefas.
+     * @param jsonArrayTask O array JSON contendo as tarefas.
+     * @return Um array de tarefas.
+     */
+
     private Task_imp[] getTasksFromJSON(JSONObject jsonObject, JSONArray jsonArrayTask) {
         // Create an array of tasks
         Task_imp[] tasks = new Task_imp[jsonArrayTask.size()];
@@ -227,11 +292,10 @@ public class Edition_imp implements Edition, Event_CRUD {
     }
 
     /**
-     * This method removes a project from the edition. The project is identified by its name.
-     *
-     * @param name The name of the project
-     * @throws IllegalArgumentException - if project name is null or empty, or project does not exist.
+     * Remove um projeto com o nome especificado.
+     * @param name O nome do projeto a ser removido.
      */
+
     @Override
     public void removeProject(String name) {
         int[] positions = new int[numberOfProjects];
@@ -266,11 +330,10 @@ public class Edition_imp implements Edition, Event_CRUD {
     }
 
     /**
-     * This method returns a project from the edition. The project is identified by its name.
-     *
-     * @param name The name of the project
-     * @return The method returns a project of the edition.
-     * @throws IllegalArgumentException - if project name is null or empty, or project does not exist.
+     * Retorna o projeto com o nome especificado.
+     * @param name O nome do projeto a ser retornado.
+     * @return O projeto com o nome especificado.
+     * @throws IllegalArgumentException Se o nome do projeto for nulo, vazio ou se o projeto não existir.
      */
     @Override
     public Project getProject(String name) {
@@ -287,9 +350,8 @@ public class Edition_imp implements Edition, Event_CRUD {
     }
 
     /**
-     * This method returns all projects of the edition.
-     *
-     * @return The method returns an array of projects.
+     * Retorna um array contendo todos os projetos desta edição.
+     * @return Um array contendo todos os projetos desta edição.
      */
     @Override
     public Project[] getProjects() {
@@ -297,10 +359,9 @@ public class Edition_imp implements Edition, Event_CRUD {
     }
 
     /**
-     * This method returns all projects of the edition that have a specific tag.
-     *
-     * @param tag The tag of the projects
-     * @return The method returns an array of projects.
+     * Retorna um array contendo todos os projetos desta edição que possuem a tag especificada.
+     * @param tag A tag para filtrar os projetos.
+     * @return Um array contendo todos os projetos desta edição que possuem a tag especificada.
      */
     @Override
     public Project[] getProjectsByTag(String tag) {
@@ -326,10 +387,9 @@ public class Edition_imp implements Edition, Event_CRUD {
     }
 
     /**
-     * This method returns all projects of the edition that have a specific participant.
-     *
-     * @param email
-     * @return The method returns an array of projects.
+     * Retorna um array contendo todos os projetos desta edição em que o participante com o email especificado está envolvido.
+     * @param email O email do participante para filtrar os projetos.
+     * @return Um array contendo todos os projetos desta edição em que o participante com o email especificado está envolvido.
      */
     @Override
     public Project[] getProjectsOf(String email) {
@@ -355,19 +415,18 @@ public class Edition_imp implements Edition, Event_CRUD {
     }
 
     /**
-     * This method returns the number of projects in the edition.
-     *
-     * @return
+     * Retorna o número de projetos nesta edição.
+     * @return O número de projetos nesta edição.
      */
+
     @Override
     public int getNumberOfProjects() {
         return numberOfProjects;
     }
 
     /**
-     * This method returns the date of the last task ending date in the projects.
-     *
-     * @return The method returns the date of the last task ending date in the projects.
+     * Retorna a data em que termina mais recente entre todas as tarefas dos projetos nesta edição.
+     * @return A data em que termina mais recente.
      */
     @Override
     public LocalDate getEnd() {
@@ -381,6 +440,11 @@ public class Edition_imp implements Edition, Event_CRUD {
         }
         return end;
     }
+
+    /**
+     * Retorna uma representação em formato de texto da edição, incluindo seus atributos e os projetos contidos nela.
+     * @return Uma string que representa a edição.
+     */
 
     @Override
     public String toString() {
@@ -401,6 +465,13 @@ public class Edition_imp implements Edition, Event_CRUD {
         return text;
     }
 
+    /**
+     * Adiciona um evento à edição.
+     * @param event O evento a ser adicionado.
+     * @return Uma mensagem indicando que o evento foi adicionado.
+     * @throws IllegalArgumentException Se o evento for nulo.
+     */
+
     @Override
     public String addEvent(Event event) {
         if (event == null) {
@@ -411,6 +482,14 @@ public class Edition_imp implements Edition, Event_CRUD {
         }
 
     }
+
+    /**
+     * Remove um evento da edição.
+     * @param var1 O nome do evento a ser removido.
+     * @return Uma mensagem indicando que o evento foi removido.
+     * @throws IllegalArgumentException Se o nome do evento for nulo ou vazio.
+     * @throws IllegalArgumentException Se o evento não existir.
+     */
 
     @Override
     public String removeEvent(String var1) {
@@ -445,6 +524,14 @@ public class Edition_imp implements Edition, Event_CRUD {
         }
     }
 
+    /**
+     * Obtém um evento com base no nome fornecido.
+     * @param var1 O nome do evento a ser obtido.
+     * @return O evento correspondente.
+     * @throws IllegalArgumentException Se o nome do evento for nulo ou vazio.
+     * @throws IllegalArgumentException Se o evento não existir.
+     */
+
     @Override
     public Event getEvent(String var1) {
         if (var1 == null || var1.isEmpty()) {
@@ -458,6 +545,11 @@ public class Edition_imp implements Edition, Event_CRUD {
             throw new IllegalArgumentException("Event does not exist");
         }
     }
+
+    /**
+     * Obtém todos os eventos.
+     * @return Um array contendo todos os eventos.
+     */
 
     @Override
     public Event[] getEvents() {

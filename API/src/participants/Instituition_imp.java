@@ -4,6 +4,10 @@ import ma02_resources.participants.Contact;
 import ma02_resources.participants.Instituition;
 import ma02_resources.participants.InstituitionType;
 
+/**
+ * Implementação da interface Instituition que representa uma instituição.
+ * Esta classe contém informações sobre o nome, email, tipo, contato, website e descrição da instituição.
+ */
 public class Instituition_imp implements Instituition {
     private String name;
     private String email;
@@ -13,14 +17,14 @@ public class Instituition_imp implements Instituition {
     private String description;
 
     /**
-     * Constructs a BaseInstitution object with the specified institution details.
+     * Cria uma nova instância da classe Instituition_imp.
      *
-     * @param name
-     * @param email
-     * @param type
-     * @param contact
-     * @param website
-     * @param description
+     * @param name        o nome da instituição
+     * @param email       o email da instituição
+     * @param type        o tipo de instituição
+     * @param contact     os dados de contato da instituição
+     * @param website     o website da instituição
+     * @param description a descrição da instituição
      */
     public Instituition_imp(String name, String email, InstituitionType type, Contact_imp contact, String website, String description) {
         this.name = name;
@@ -32,18 +36,18 @@ public class Instituition_imp implements Instituition {
     }
 
     /**
-     * Returns the name of the institution.
+     * Retorna o nome da instituição.
      *
-     * @return the name of the institution
+     * @return o nome da instituição
      */
     @Override
     public String getName() {
         return name;
     }
     /**
-     * Returns the email of the institution.
+     * Retorna o email da instituição.
      *
-     * @return the email of the institution
+     * @return o email da instituição
      */
     @Override
     public String getEmail() {
@@ -51,62 +55,64 @@ public class Instituition_imp implements Instituition {
     }
 
     /**
-     * Returns the type of the institution.
-     * @return
+     * Retorna o type da instituição.
+     *
+     * @return o type da instituição
      */
     @Override
     public InstituitionType getType() {
         return type;
     }
     /**
-     * Returns the contact information of the institution.
+     * Retorna o contato da instituição.
      *
-     * @return the contact information of the institution
+     * @return o contato da instituição
      */
     @Override
     public Contact_imp getContact() {
         return contact;
     }
     /**
-     * Returns the website of the institution.
+     * Retorna o website da instituição.
      *
-     * @return the website of the institution
+     * @return o website da instituição
      */
     @Override
     public String getWebsite() {
         return website;
     }
     /**
-     * Returns the description of the institution.
+     * Retorna a descrição da instituição.
      *
-     * @return the description of the institution
+     * @return a descrição da instituição
      */
     @Override
     public String getDescription() {
         return description;
     }
     /**
-     * Sets the name of the institution.
+     * Define o website da instituição.
      *
-     * @param s the name of the institution
+     * @param s o website da instituição
      */
     @Override
     public void setWebsite(String s) {
         this.website = s;
     }
     /**
-     * Sets the email of the institution.
+     /**
+     * Define a descrição da instituição.
      *
-     * @param s the email of the institution
+     * @param s a descrição da instituição
      */
     @Override
     public void setDescription(String s) {
         this.description = s;
     }
     /**
-     * Sets the contact information of the institution.
+     * Define o contato da instituição.
      *
-     * @param contact the contact information of the institution
+     * @param contact o contato da instituição
      */
     @Override
     public void setContact(Contact contact) {
@@ -114,15 +120,21 @@ public class Instituition_imp implements Instituition {
     }
 
     /**
-     * Sets the type of the institution.
+     * Define o tipo de instituição.
      *
-     * @param instituitionType the type of the institution
+     * @param instituitionType o tipo de instituição
      */
     @Override
     public void setType(InstituitionType instituitionType) {
         this.type = instituitionType;
     }
 
+    /**
+     * Verifica se a instituição é igual a outro objeto.
+     *
+     * @param var1 o objeto a ser comparado
+     * @return true se a instituição for igual ao objeto, caso contrário false
+     */
 
     @Override
     public boolean equals(Object var1) {
@@ -145,6 +157,12 @@ public class Instituition_imp implements Instituition {
 
         return equal;
     }
+
+    /**
+     * Retorna uma representação em formato de string da instituição.
+     *
+     * @return uma string que representa a instituição
+     */
 
     @Override
     public String toString() {
