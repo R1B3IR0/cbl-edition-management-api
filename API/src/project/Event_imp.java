@@ -16,16 +16,6 @@ public class Event_imp implements Event {
     private String local;
     private EventType type;
 
-    /**
-     * Constructor of the class Event_imp
-     *
-     * @param name  the name of the event
-     * @param start the start date of the event
-     * @param end   the end date of the event
-     */
-    public Event_imp(String name , LocalDate start, LocalDate end) {
-
-    }
 
     public Event_imp(String name, String start, String end) {
         this.name = name;
@@ -59,5 +49,18 @@ public class Event_imp implements Event {
     @Override
     public EventType getType() {
         return type;
+    }
+
+    @Override
+    public String toString() {
+        String text = "";
+
+        text += "Name: " + name + "\n"
+                + "Start: " + start + "\n"
+                + "End: " + end + "\n"
+                + "Local: " + local + "\n"
+                + "Type: " + type + "\n";
+
+        return text;
     }
 }

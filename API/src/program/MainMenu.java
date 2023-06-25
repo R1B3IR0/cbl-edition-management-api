@@ -1,6 +1,8 @@
 package program;
 
 import ma02_resources.participants.Student;
+import ma02_resources.project.Edition;
+import ma02_resources.project.Project;
 
 public class MainMenu implements Display {
     @Override
@@ -35,7 +37,14 @@ public class MainMenu implements Display {
                         participantName = control.getUserInputString("Enter name of Student to login: ");
                         Student student = control.getEditions().getStudent(participantName);
 
+                        editionName = control.getUserInputString("Enter name of Edition: ");
+                        Edition edition = control.getEditions().getEdition(editionName);
 
+                        projectName = control.getUserInputString("Enter name of Project: ");
+                        Project project = edition.getProject(projectName);
+
+                        StudentMenu menu = new StudentMenu(student, edition, project);
+                        menu.display(control);
                     } catch (NullPointerException e) {
                         System.out.println(e.getMessage());
                     }

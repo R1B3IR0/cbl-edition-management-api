@@ -160,8 +160,7 @@ public class ProjectMenu implements Display {
                                 "event from: ");
                         String eventTitle = control.getUserInputString("Enter the title of the event you want to delete: ");
 
-                       // control.getEditions().getEdition(edition.getName()).getProject(projectTitle).removeEvent(eventTitle);
-                       // control.getEditions().getEdition(edition.getName()).getProject(project.addEvent(eventTitle));
+                        control.getEditions().getEdition(edition.getName()).getProject(project.removeEvent(eventTitle));
                     } catch (NullPointerException e) {
                         System.out.println(e.getMessage());
                     } catch (Exception e) {
@@ -182,7 +181,7 @@ public class ProjectMenu implements Display {
                     break;
                 case 10: // List Projects
                     try {
-                        for(Project list : control.getEditions().getEdition(edition.getName()).getProjects()) {
+                        for (Project list : control.getEditions().getEdition(edition.getName()).getProjects()) {
                             System.out.println(list.toString() + "\n");
                         }
                     } catch (NullPointerException e) {
@@ -204,7 +203,7 @@ public class ProjectMenu implements Display {
                     try {
                         projectTitle = control.getUserInputString("Enter the title of the project you want to list the tasks: ");
 
-                        for(Task list : control.getEditions().getEdition(edition.getName()).getProject(projectTitle).getTasks()) {
+                        for (Task list : control.getEditions().getEdition(edition.getName()).getProject(projectTitle).getTasks()) {
                             System.out.println(list.toString() + "\n");
                         }
                     } catch (NullPointerException e) {
@@ -213,7 +212,7 @@ public class ProjectMenu implements Display {
                         System.out.println("An error has ocurred!: " + e.getMessage());
                     }
                     break;
-                case 13: //List events // Ver depois
+                case 13: //List events // Rever
                     try {
                         projectTitle = control.getUserInputString("Enter the title of the project you want to list the events: ");
 

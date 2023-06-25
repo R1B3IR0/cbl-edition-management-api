@@ -2,7 +2,7 @@ package interfaces;
 
 import java.io.IOException;
 
-public interface I_EditionManagement extends I_Edition, I_Event, I_Project, I_Task ,I_Participant{
+public interface I_EditionManagement extends I_Edition {
 
     public void saveEditionsToJsonFile(String filename) throws IOException;
 

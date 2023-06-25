@@ -5,20 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02358d0b-8d8c-4c20-8464-607cdbc65e1c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/program/StudentMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../2223_PP_EN.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../2223_PP_EN.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/API/interfaces/I_Edition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/interfaces/I_Edition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/interfaces/I_Project.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/interfaces/I_Project.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/program/ParticipantMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/project/Submission_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/project/Submission_imp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/API/interfaces/I_Project.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/Event_CRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/Event_CRUD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interfaces/I_Edition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/I_Edition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interfaces/I_EditionManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/I_EditionManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/I_Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/I_Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/I_Event.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/I_Participant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/I_Project.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/I_Task.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/program/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/program/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/program/ParticipantMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project/EditionManagement_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/EditionManagement_imp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project/Submission_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Submission_imp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/program/ProjectMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/program/ProjectMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/Event_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Event_imp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/Project_imp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Project_imp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

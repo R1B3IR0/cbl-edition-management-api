@@ -106,7 +106,7 @@ public class Project_imp implements Project, Event_CRUD {
      * @param tasks
      */
     public Project_imp(String name, String description, int numberOfParticipants, int numberOfPartners,
-                       int numberOfFacilitators, int numberOfStudents, int numberOfTasks ,String[] tags, Task_imp[] tasks) {
+                       int numberOfFacilitators, int numberOfStudents, int numberOfTasks, String[] tags, Task_imp[] tasks) {
         this.name = name;
         this.description = description;
         this.numberOfParticipants = (int) Math.min(numberOfParticipants, MAXIMUM_NUMBER_OF_PARTICIPANTS);
@@ -280,11 +280,11 @@ public class Project_imp implements Project, Event_CRUD {
             participants = tmp;
 
             // Update the number of participants
-            if(participants[numberOfParticipants] instanceof Student_imp){
+            if (participants[numberOfParticipants] instanceof Student_imp) {
                 numberOfStudents--;
-            } else if(participants[numberOfParticipants] instanceof Partner_imp){
+            } else if (participants[numberOfParticipants] instanceof Partner_imp) {
                 numberOfPartners--;
-            } else if(participants[numberOfParticipants] instanceof Facilitator_imp){
+            } else if (participants[numberOfParticipants] instanceof Facilitator_imp) {
                 numberOfFacilitators--;
             }
 
@@ -312,6 +312,7 @@ public class Project_imp implements Project, Event_CRUD {
     public Participant_imp[] getParticipants() {
         return participants;
     }
+
     @Override
     public String[] getTags() {
         if (hasTags != false) {
@@ -412,6 +413,7 @@ public class Project_imp implements Project, Event_CRUD {
 
     /**
      * This method returns the number of array tags
+     *
      * @return
      */
     public int getNumberOfTags() {
@@ -499,10 +501,11 @@ public class Project_imp implements Project, Event_CRUD {
      * This method removes an event from the edition. The event is identified by its name.
      *
      * @param var1 The name of the event
+     * @return
      * @throws IllegalArgumentException - if event name is null or empty, or event does not exist.
      */
     @Override
-    public void removeEvent(String var1) {
+    public String removeEvent(String var1) {
         if (var1 == null || var1.isEmpty()) {
             throw new IllegalArgumentException("Event name can't be null or empty");
         } else {
@@ -527,14 +530,17 @@ public class Project_imp implements Project, Event_CRUD {
                 }
                 events = tmp;
                 numberOfEvents--;
+                return "Event removed";
             } else {
                 throw new IllegalArgumentException("Event does not exist");
             }
         }
+
     }
 
     /**
      * This method returns an event from the edition. The event is identified by its name.
+     *
      * @param var1 The name of the event
      * @return The method returns an event of the edition.
      * @throws IllegalArgumentException - if event name is null or empty, or event does not exist.
@@ -554,7 +560,8 @@ public class Project_imp implements Project, Event_CRUD {
     }
 
     /**
-     *  This method returns all events of the edition.
+     * This method returns all events of the edition.
+     *
      * @return
      */
     @Override
