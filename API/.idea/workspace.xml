@@ -4,34 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02358d0b-8d8c-4c20-8464-607cdbc65e1c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/libs/json-simple-1.1.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/json_simple_1_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API.iml" beforeDir="false" afterPath="$PROJECT_DIR$/API.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/enumerations/EventType$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/enumerations/EventType$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/enumerations/EventType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/enumerations/EventType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/enumerations/RankType$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/enumerations/RankType$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/enumerations/RankType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/enumerations/RankType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/participants/Contact_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/participants/Contact_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/participants/Facilitator_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/participants/Facilitator_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/participants/Instituition_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/participants/Instituition_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/participants/Participant_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/participants/Participant_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/participants/Partner_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/participants/Partner_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/participants/Student_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/participants/Student_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/program/AdminMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/program/AdminMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/program/ControlPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/program/ControlPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/program/EditionMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/program/EditionMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/program/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/program/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/program/OtherListsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/program/OtherListsMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/program/ProjectMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/program/ProjectMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/program/StudentMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/program/StudentMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/project/EditionManagement_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/project/EditionManagement_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/project/Edition_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/project/Edition_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/project/Event_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/project/Event_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/project/Project_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/project/Project_imp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/API/project/Submission_imp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/API/project/Submission_imp.class" afterDir="false" />
-    </list>
+    <list default="true" id="02358d0b-8d8c-4c20-8464-607cdbc65e1c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,20 +36,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/RIBEIRO/Documents/ESTG/PP/EN/API/libs/json-simple-1.1.1.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.general"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/RIBEIRO/Documents/ESTG/PP/EN/API/libs/json-simple-1.1.1.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
